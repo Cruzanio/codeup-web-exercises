@@ -2,3 +2,74 @@
     color: purple; /* single line comment */
     text-decoration: underline;
 }
+
+h1, h2, h3, h4, h5, h6 {
+    color: lightblue;
+    text-decoration: underline;
+}
+
+body {
+    background-image: url("../img/webbg.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: white;
+    font-family: 'Recursive', sans-serif;
+    color: white;
+    text-align: center;
+    list-style-position: inside
+}
+
+/*.exp_list{
+    list-style: none;
+    padding-left:0;
+}
+.exp_list li{
+    position:relative;
+    padding-left: 20px;
+}
+.exp_list li:before{
+    content:'';
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    background-image: url("../img/chalk.jpg");
+    background-size: cover;
+    background-postion: center;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}*/
+
+
+table {
+    font-size: large;
+    border-style: groove;
+    border-color: aquamarine;
+}
+
+th, tr, td {
+    padding: .5em;
+}
+
+
+.table-dec {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a:link {
+    color: red;
+}
+
+a:visited {
+    color: lightcyan;
+}
+
+a:hover {
+    color: blue;
+}
+
+a:active {
+    color: green;
+}
