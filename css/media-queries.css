@@ -1,0 +1,130 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+body {
+    margin: 1em;
+}
+.alert-info {
+    width: 95%;
+    display: flex;
+    background-color: #bef6f0;
+    border: 1px solid grey;
+    justify-content: center;
+    align-items: center;
+    height: 3em;
+    margin: auto;
+    font-size: 1em;
+}
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+li {
+    display: flex;
+    flex-direction: column;
+    background-color: lightgray;
+    margin: .5em 0;
+    justify-content: space-around;
+    width: 95%;
+    height: 2.5em;
+    align-items: center;
+    font-size: 1em;
+}
+.alert-info a {
+    text-decoration: none;
+    color: black;
+}
+h1 {
+    text-align: center;
+    font-size: 3em;
+    margin: 10px auto;
+}
+.header-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: .5em 0;
+}
+img {
+    max-width: 95%;
+    max-height: 75%;
+}
+h2 {
+    margin: .5em 0;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    margin: auto auto 2em auto;
+}
+.sub-section {
+    font-style: italic;
+}
+footer {
+    display: flex;
+    width: 95%;
+    margin: 8em auto auto auto;
+    font-size: small;
+}
+@media screen and (min-width: 577px) {
+    body {
+        margin: 0;
+    }
+    .alert-info {
+        display: none;
+    }
+
+    li {
+        flex-direction: row;
+        background-color: white;
+        padding: 0 1em;
+    }
+    h1 {
+        width: 20%;
+        display: inline-block;
+    }
+    nav {
+        float: right;
+        margin-right: 2rem;
+    }
+    nav ul {
+        flex-direction: row;
+    }
+    nav a {
+        margin-top: 2.3em;
+    }
+    .header-img {
+        width: 100%;
+    }
+    img {
+        width: 100%;
+        margin: 3em 0;
+    }
+    h2 {
+        margin: 1em 0;
+    }
+    .main {
+        margin-left: 3rem;
+        width: 60%;
+        float: left;
+    }
+    .sub-section {
+        margin-right: 3rem;
+        width: 25%;
+        float: right;
+    }
+    footer {
+        margin-left: 3rem;
+    }
+
+}

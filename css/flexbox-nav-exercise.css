@@ -4,12 +4,16 @@
     margin: 0;
     color: black;
 }
+
 nav {
     background-color: grey;
     color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+nav .logo {
 }
 
 nav a {
@@ -27,7 +31,6 @@ nav ul {
     display: flex;
     list-style-type: none;
     font-family: 'Work Sans', sans-serif;
-
 }
 
 .logo {
@@ -35,14 +38,15 @@ nav ul {
     font-size: 3em;
     padding: .2em 0;
     font-family: 'Montserrat', sans-serif;
+    font-weight: bolder;
 }
-
-
 
 .line {
     border-bottom: black solid;
     margin: 2em 0 1em 0;
 }
+
+
 
 
 
@@ -54,6 +58,7 @@ footer {
     width: 100%;
     font-family: 'Work Sans', sans-serif;
 }
+
 .container {
     min-width: 768px;
     width: 95%;
@@ -63,6 +68,7 @@ footer {
     /*justify-content: space-around;*/
 
 }
+
 h1 {
     font-size: 2em;
 }
@@ -77,6 +83,7 @@ footer ul {
     margin: 0;
     padding: 0;
 }
+
 footer .container {
     display: flex;
     flex-direction: column;
@@ -84,6 +91,7 @@ footer .container {
     padding: 4em 0;
     height: 30em;
 }
+
 .top-footer {
     display: flex;
     justify-content: space-between;
@@ -91,6 +99,7 @@ footer .container {
     padding: 0;
 
 }
+
 .icon-wrapper {
     border: 2px solid grey;
     border-radius: 2.4em;
@@ -98,21 +107,26 @@ footer .container {
     width: 2.4em;
     display: flex;
 }
+
 .icon-wrapper i {
     margin: auto;
 }
+
 .logo-div {
     display: flex;
     flex-direction: column;
 }
+
 .social-media-links {
     display: flex;
     justify-content: center;
 }
+
 footer .bottom-footer {
     display: flex;
     justify-content: space-between;
 }
+
 /*footer .top-footer a {*/
 /*    text-transform: uppercase;*/
 /*    font-weight: 200;*/
@@ -133,26 +147,36 @@ footer .top-footer a {
     padding: .3em;
     display: flex;
     justify-content: space-around;
-
 }
 
 .blinks {
     display: flex;
     align-items: center;
 }
+
 .blinks ul {
     margin-right: 2em;
 }
+
 .blinks ul li {
     padding: .3em;
+}
+
+/*.srch {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+
+
 }
 
 button {
     width: 5em;
 }
+
 input {
     margin-top: 1em;
 }
+
 
 
 

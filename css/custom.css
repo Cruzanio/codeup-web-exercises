@@ -1,0 +1,13 @@
+.navbar:{
+    float: right;
+}
+
+.jumbotron-fluid {
+    background-image: url("../img/pizza.png");
+    margin: auto 0;
+    text-align: center;
+}
+.container {
+    background: white;
+    opacity: 60%;
+}
