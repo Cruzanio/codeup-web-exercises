@@ -15,3 +15,12 @@
     color: white;
     background-color: #007BFF;
 }
+.form-check-label {
+    margin-left: 1em;
+}
+.form-check-input {
+    margin-left: auto;
+}
+nav a {
+    color: black;
+}
