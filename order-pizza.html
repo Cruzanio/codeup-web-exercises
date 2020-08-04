@@ -51,9 +51,13 @@
         </ul>
     </div>
     <div>
-            <a class="nav-link" href="#"><svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-            </svg> Sign Up</a>
+        <a class="nav-link" href="#">
+            <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-person-fill" fill="currentColor"
+                 xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                      d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+            </svg>
+            Sign Up</a>
     </div>
 </nav>
 
@@ -88,42 +92,126 @@
             <div class="card-headers text-left p-2">
                 Choose Size and Crust
             </div>
+
+
             <div class="card-body">
-<!--                <h5 class="card-title">Special title treatment</h5>-->
+                <!--                <h5 class="card-title">Special title treatment</h5>-->
                 <div class="card m-0">
-                    <div class="card-header1 m-2">
+                    <div class="card-header">
                         Hand Tossed
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Garlic seasoned crust with a rich, buttery taste.</li>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                   value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Small (10")
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                   value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Medium (12")
+                            </label>
+                        </div>
                     </ul>
                 </div>
+
                 <br>
+
                 <div class="card">
-                    <div class="card-header2 m-2">
+                    <div class="card-header">
                         Crispy Thin
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Cras justo odio</li>
-                        <li class="list-group-item">Dapibus ac facilisis in</li>
-                        <li class="list-group-item">Vestibulum at eros</li>
+                        <li class="list-group-item">Thin enough for optimum crispy to crunchy ratio.</li>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1"
+                                   value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Medium (12")
+                            </label>
+                        </div>
+                        <div class="form-check m-2">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2"
+                                   value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Large (14")
+                            </label>
+                        </div>
                     </ul>
                 </div>
+
+
             </div>
+
+
             <div class="card-footer text-muted text-right">
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">Next Step ></a>
             </div>
         </div>
     </div>
     <div class="tab-pane fade" id="cas" role="tabpanel" aria-labelledby="cas-tab">
-        ...
+        <div class="card m-2">
+            <div class="card-headers text-left p-2">
+                Choose Cheese and Sauce
+            </div>
+
+
+            <div class="card-body">
+                <div class="card m-0">
+                    <div class="card-header">
+                        Cheese
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <div class="form-check mx-1 my-2">
+                            <li class="list-group-item">How Much?</li>
+                            <select class="custom-select">
+                                <option value="1" selected>Light</option>
+                                <option value="2">Normal</option>
+                                <option value="3">Extra</option>
+                                <option value="4">Double</option>
+                            </select>
+                        </div>
+                    </ul>
+                </div>
+
+                <br>
+
+                <div class="card">
+                    <div class="card-header">
+                        Sauce
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">What Type?</li>
+                        <div class="form-check mx-1 my-2">
+                            <select class="custom-select">
+                                <option selected>Tomato Sauce</option>
+                                <option value="1">Marinara Sauce</option>
+                                <option value="2">BBQ Sauce</option>
+                                <option value="3">Alfredo Sauce</option>
+                            </select>
+                        </div>
+                        <li class="list-group-item p-2">How Much?</li>
+                        <div class="form-check mx-1 my-2 p-0">
+                            <select class="custom-select">
+                                <option selected>Light</option>
+                                <option value="1">Normal</option>
+                                <option value="2">Extra</option>
+                            </select>
+                        </div>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+        <div class="tab-pane fade" id="t" role="tabpanel" aria-labelledby="t-tab">
+            ...
+        </div>
     </div>
-    <div class="tab-pane fade" id="t" role="tabpanel" aria-labelledby="t-tab">
-        ...
-    </div>
-</div>
 
 
 </body>
