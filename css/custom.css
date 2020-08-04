@@ -7,7 +7,14 @@
     margin: auto 0;
     text-align: center;
 }
-.container {
+.container-fluid {
     background: white;
     opacity: 60%;
+}
+.card-headers {
+    color: white;
+    background-color: #007BFF;
+}
+.card {
+    m;
 }
