@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JS Functions</title>
+</head>
+<body>
+<script src="js/functions.js"></script>
+<script>
+    (function () {
+        "use strict";
+        var iffeVar = "I'm local to the IIFE";
+
+        function happyBirthday(name) {
+            console.log("Happy Birthday to You")
+            console.log("Happy Birthday to You")
+            console.log("Happy Birthday dear " + name)
+            console.log("Happy Birthday to You")
+        }
+        happyBirthday("Name1")
+        happyBirthday("Name2")
+    })();
+</script>
+</body>
+</html>
