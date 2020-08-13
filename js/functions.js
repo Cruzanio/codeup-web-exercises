@@ -78,10 +78,7 @@ console.log(isTwo(random))
 
 
 function calculateTip(percent, total) {
-    var tip = (percent * total)
-    var finalBill = (tip + total)
-    console.log(tip.toFixed(3))
-    console.log(finalBill.toFixed(3))
+    return(percent * total)
 }
 
 calculateTip(.25, 25.50);
@@ -102,11 +99,7 @@ function calculateTip2() {
     } else {
         var bill = prompt('How much was your bill?')
         var tipPercent = prompt('What percentage would you like to tip?')
-        var tipCalc = (parseFloat(tipPercent) / 100) * parseFloat(bill)
-        var finalBill = (parseFloat(tipCalc) + parseFloat(bill))
-        alert("Your total bill with a " + tipPercent + "% tip is " + finalBill)
-        console.log(tipCalc.toFixed(3))
-        console.log(finalBill.toFixed(3))
+        alert("Your recommended tip is $" + (calculateTip(tipPercent, bill)))
     }
 }
 
@@ -127,11 +120,20 @@ calculateTip2()
  * > applyDiscount(45.99, 0.12) // 40.4712
  */
 
-function applyDiscount (originalPrice, discountPercent) {
-    var discountTotal = parseFloat(originalPrice) * ((parseFloat(discountPercent)))
-    var afterDiscount = parseFloat(originalPrice) - parseFloat(discountTotal)
-    console.log(discountTotal.toFixed(2))
-    console.log(afterDiscount.toFixed(2))
+function applyDiscount () {
+    var question2 = "Would you like me to calculate your discounted price?"
+    var answer2 = confirm(question2)
+    if (answer2 === false) {
+        return;
+    } else {
+        var originalPrice = prompt("What is the original price of the item?")
+        var discountPercent = prompt("What is the discount percent?")
+        var discountTotal = parseFloat(originalPrice) * ((parseFloat(discountPercent))/100)
+        var afterDiscount = parseFloat(originalPrice) - parseFloat(discountTotal)
+        alert("Your discounted price is $" + afterDiscount)
+        console.log(discountTotal.toFixed(2))
+        console.log(afterDiscount.toFixed(2))
+    }
 }
 
-applyDiscount(45.99, .12)
+applyDiscount()

@@ -14,7 +14,7 @@ alert(favcolor + " is my favorite color too!");
 function movieRent() {
     var rentQuestion = "Did you rent any of the following? The little Mermaid, Brother Bear, or Hercules?"
     var rentAnswer = confirm(rentQuestion);
-    if (rentAnswer == false) {
+    if (rentAnswer === false) {
         return;
     } else {
         var movie1 = "How many days did you borrow The Little Mermaid?";
@@ -37,7 +37,7 @@ movieRent();
 function paycheckMath() {
     var payQuestion = "Would you like us to calculate your paycheck?"
     var payAnswer = confirm(payQuestion)
-    if (payAnswer == false) {
+    if (payAnswer === false) {
         return;
     } else {
         var hours1 = "How many hours did you work at Google this week?";
