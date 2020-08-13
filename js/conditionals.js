@@ -238,8 +238,8 @@ console.log(message)
 
 //TODO: Refactor the following conditional as a ternary
 
-// var weather = "sunny";
-// var weatherMessage;
+var weather = "rainy";
+var weatherMessage;
 
 // if(weather === "rainy"){
 //    weatherMessage = "It's raining!";
@@ -248,7 +248,8 @@ console.log(message)
 // }
 // console.log(weatherMessage);
 
-//WRITE YOUR TERNARY STATEMENT HERE!
+var weatherMessage = (weather === "rainy") ? "It's raining!" : "Have a nice day!";
+console.log(weatherMessage)
 
 
 
