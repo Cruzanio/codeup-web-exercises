@@ -525,10 +525,7 @@ analyzeColors1(colorAnswer)
  */
 
 function calculateTotal(luckyNumber, originalPrice) {
-    if (luckyNumber === 0) {
-        var finalCost = originalPrice
-        alert("You lucky number is " + luckyNumber + ". Your bill before discount was " + billStart + ". Your bill after discount is " + finalCost)
-    } else if (luckyNumber === 1) {
+    if (luckyNumber === 1) {
         var finalCost = (originalPrice - (.10 * originalPrice))
         alert("You lucky number is " + luckyNumber + ". Your bill before discount was " + billStart + ". Your bill after discount is " + finalCost)
     } else if (luckyNumber === 2) {
@@ -584,22 +581,15 @@ function yourNumber() {
     var participate = confirm("Would you like to enter a number?")
     if (participate === true) {
         var inputAnswer = prompt("Enter your number")
-        if (isNaN(parseFloat(inputAnswer)) === false) {
-            if (inputAnswer % 2 === 0) {
-                alert("The number you have entered is even.")
-                alert("Your number + 100 is " + inputAnswer + 100)
-                alert(inputAnswer >= 0 ? "The number is positive" : "The number is negative")
-            } else {
-                alert("The number you have entered is odd.")
-                alert(parseFloat(inputAnswer) + 100)
-                alert(inputAnswer >= 0 ? "The number is positive" : "The number is negative")
-            }
+        if (isNaN(parseInt(inputAnswer)) === false) {
+            alert(inputAnswer % 2 === 0 ? "The number is even" : "The number is odd")
+            alert("Your number + 100 is " + (parseInt(inputAnswer) + 100))
+            alert(inputAnswer >= 0 ? "The number is positive" : "The number is negative")
         } else {
-            alert("What you have entered is not a number")
+            alert("The entered value is not a number")
         }
     } else {
         return;
     }
 }
-
 yourNumber()
