@@ -34,10 +34,33 @@ console.log(returnTenEvenOddMessages());
 
 function returnNumberSail() {
     let output3 = ""
-    for (let i = 1; i <= 10; i++) {
-        output3 += digit + " x " + i + " = " + digit * i
-        if (i !== 9) {
-            output3 += "\n"
-        }
+    for (let i = 1; i <= 9; i++) {
+        output3 += String(i).repeat(i)
+        if (i !== 9) output3 += "\n"
     } return output3
 }
+console.log(returnNumberSail())
+
+function returnCountDownFrom100InFives() {
+    let output4 = ""
+    for (let i = 100; (i >= 0) ; i-=5) {
+        output4 += i
+        if(i !== 0) output4 += "\n"
+    } return output4
+}
+
+console.log(returnCountDownFrom100InFives())
+
+// for (var j = 1; j < 100; j++) {
+//     if (j % 2 === 1) {
+//         continue;
+//     }
+//     console.log('Here is an even number: ' + j)
+// }
+//
+// for (var j = 1; j < 100; j++) {
+//     if (j % 3 !== 0) {
+//         continue;
+//     }
+//     console.log('Divisible by 3: ' + j)
+// }
