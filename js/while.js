@@ -6,13 +6,6 @@ function timesTwo() {
     }
 }
 timesTwo()
-// var i = 0;
-//
-// while (i < 10) {
-//     console.log('while loop iteration #' + i);
-//     i++;
-// }
-
 
 
 function conesToSellForTheDay() {
@@ -37,11 +30,3 @@ conesToSellForTheDay()
 
 
 
-// if (allCones > 0) {
-//     allCones -= customerPurchase
-//     console.log(customerPurchase + " cones sold.")
-// } else if ((allCones > 0) && (allCones < customerPurchase)) {
-//     console.log("I can't sell you " + customerPurchase + " cones because I only have " + allCones + " cones left.")
-// } else if (allCones === 0 ) {
-//     console.log("Yay! I sold them all!")
-// }
