@@ -1,6 +1,6 @@
 function timesTwo() {
     var output = 1
-    while (output < 65536) {
+    while (output <= 65536) {
         output *= 2
         console.log(output);
     }
@@ -26,7 +26,11 @@ function conesToSellForTheDay() {
 
 conesToSellForTheDay()
 
-
+function addUp(num) { 
+    if(num == 1)
+        return num; 
+    return num + addUp(num - 1) 
+}
 
 
 

@@ -51,16 +51,3 @@ function returnCountDownFrom100InFives() {
 
 console.log(returnCountDownFrom100InFives())
 
-// for (var j = 1; j < 100; j++) {
-//     if (j % 2 === 1) {
-//         continue;
-//     }
-//     console.log('Here is an even number: ' + j)
-// }
-//
-// for (var j = 1; j < 100; j++) {
-//     if (j % 3 !== 0) {
-//         continue;
-//     }
-//     console.log('Divisible by 3: ' + j)
-// }
