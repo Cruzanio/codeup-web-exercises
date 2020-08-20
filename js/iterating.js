@@ -8,6 +8,20 @@
      */
 
     var names = ['James', 'Mike', 'Fred', 'Alan'];
+    function namesFun() {
+        if (names[0] !== 'James') {
+            names.unshift('James')
+        } else if (names[0] === 'James') {
+            names.shift()
+        }
+            names.push('Cruz')
+            console.log(names)
+
+        if (names.length < 10) {
+            namesFun(names)
+        }
+    }
+    namesFun(names)
 
     /**
      * TODO:
@@ -62,18 +76,15 @@
     function returnFirstElement(numbers) {
         return(numbers[0])
     }
-    returnFirstElement(numbers)
-
+    console.log(returnFirstElement(numbers))
 
     function returnSecondElement(numbers) {
         return(numbers[1])
     }
-    returnSecondElement(numbers)
-
+    console.log(returnSecondElement(numbers))
 
     function returnLastElement(numbers) {
         return(numbers.slice(-1)[0])
     }
-    returnLastElement(numbers)
-
+    console.log(returnLastElement(numbers))
 })();
