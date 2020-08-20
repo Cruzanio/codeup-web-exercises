@@ -20,16 +20,17 @@
      * results. Why might this be useful?
      *
      * BONUS:
-     * Create another string that would display your planets in an undordered
+     * Create another string that would display your planets in an unordered
      * list. You will need an opening AND closing <ul> tags around the entire
      * string, and <li> tags around each planet.
      */
 
-    var planetsStringBr = "Mercury<br>Venus<br>Earth<br>Mars<br>Jupiter<br>Saturn<br>Uranus<br>Neptune";
+    var planetsStringBr = planetsArray.join('<br>')
     console.log(planetsStringBr)
 
-    var unorderedList = "<ul><li>Mercury</li><li>Venus</li><li>Earth</li><li>Mars</li><li>Jupiter</li><li>Saturn</li><li>Uranus</li><li>Neptune</li></ul>"
+    var unorderedList = ("<ul><li>" + planetsArray.join('</li><li>') + '</li></ul>');
     console.log(unorderedList)
+
 })();
 
 
