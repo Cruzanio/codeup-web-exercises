@@ -35,19 +35,19 @@
 
     console.log('Finding and logging the index of "Earth" in the planets array.');
     var indexOfEarth = planets.indexOf('Earth');
-    console.log(indexOfEarth);
+    console.log('Earth is located at Index: ' + indexOfEarth);
 
     // TODO: Read the console.log() statement above. Write code to perform the step it describes.
 
-    // console.log('Using splice to remove the planet after "Earth".');
-    // var planetAfterEarth = planets.splice(indexOfEarth + 1, 1);
-    // // TODO: Read the console.log() statement above. Write code to perform the step it describes.
-    // logPlanets();
-    //
-    // console.log('Using splice to add back the planet after "Earth".');
-    // planets.splice(indexOfEarth + 1, 0, planetAfterEarth[0]);
-    // // TODO: Read the console.log() statement above. Write code to perform the step it describes.
-    // logPlanets();
+    console.log('Using splice to remove the planet after "Earth".');
+    var planetAfterEarth = planets.splice(indexOfEarth + 1, 1);
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    logPlanets();
+
+    console.log('Using splice to add back the planet after "Earth".');
+    planets.splice(indexOfEarth + 1, 0, planetAfterEarth[0]);
+    // TODO: Read the console.log() statement above. Write code to perform the step it describes.
+    logPlanets();
 
     console.log("Reversing the order of the planets array.");
     planets.reverse();

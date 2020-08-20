@@ -31,6 +31,8 @@
     var unorderedList = ("<ul><li>" + planetsArray.join('</li><li>') + '</li></ul>');
     console.log(unorderedList)
 
+document.getElementById("planets").innerHTML = unorderedList;
+
 })();
 
 
