@@ -32,7 +32,10 @@ person.sayHi()
  * > console.log(person.sayHello()) // "Hello from Rick Sanchez!"
  */
 
-//see above
+ person.alternativeHello = function () {
+     return "Hello from " + this.firstName + " " + this.lastName + "!"
+ }
+
 
 /** TODO:
  * HEB has an offer for the shoppers that buy products amounting to
@@ -156,16 +159,14 @@ function createBook(title, firstName, lastName) {
 
 createBook("Tick Tock", "Dean", "Koonz")
 
-function bookInfo() {
-    console.log("Book #" + (i + 1))
-    console.log(books[i].series)
-    console.log(books[i].author)
-}
+
 
 function showBookInfo(input) {
     books.forEach(function (bookSeries, i) {
         if (bookSeries.series.includes(input)) {
-           bookInfo()
+            console.log("Book #" + (i + 1))
+            console.log(books[i].series)
+            console.log("" + books[i].author.firstName + " " + books[i].author.lastName)
         }
     })
 }
