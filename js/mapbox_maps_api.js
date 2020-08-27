@@ -5,15 +5,21 @@ var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
     center: [12.5881, 46.0695], // starting position [lng, lat]
-    zoom: 15// starting zoom
+    zoom: 12// starting zoom
 });
+document.getElementById('map-reset').addEventListener("click", reset)
+function reset() {
+    location.reload(true)
+}
 
 function restaurant1 () {
     geocode("Via Ippolito Nievo Nr 2, 33081, Aviano Italy", MAPBOX_TOKEN2)
         .then(function (result) {
             console.log('Geocode for New Risto Pizza results: ' + result);
+            var marker1 = new mapboxgl.Marker().setLngLat([12.586282, 46.073095]).addTo(map)
             map.setCenter(result);
             map.setZoom(17);
+            marker1.setPopup(avianoPopup)
         });
 }
 
@@ -21,8 +27,10 @@ function restaurant2 () {
     geocode("Viale per Costa, 6/B, 33081 Castello d'Aviano PN, Italy", MAPBOX_TOKEN2)
         .then(function (result) {
             console.log('Geocode for Befeds results: ' + result);
+            var marker2 = new mapboxgl.Marker().setLngLat([12.5886, 46.0748]).addTo(map)
             map.setCenter(result);
             map.setZoom(17);
+            marker2.setPopup(beFedsPopup)
         });
 }
 
@@ -30,8 +38,10 @@ function restaurant3 () {
     geocode("Via Giuseppe Mazzini, 15, 33081 Castello d'Aviano PN, Italy", MAPBOX_TOKEN2)
         .then(function (result) {
             console.log('Geocode for Buonissimo Kebabs results: ' + result);
+            var marker3 = new mapboxgl.Marker().setLngLat([12.587187, 46.070614]).addTo(map)
             map.setCenter(result);
             map.setZoom(17);
+            marker3.setPopup(kebabPopup)
         });
 }
 
@@ -65,14 +75,6 @@ zoom10.addEventListener('click', changeZoom10)
 zoom15.addEventListener('click', changeZoom15)
 
 
-//New RistoPizza
-var marker1 = new mapboxgl.Marker().setLngLat([12.586282, 46.073095]).addTo(map)
-
-//BeFeds
-var marker2 = new mapboxgl.Marker().setLngLat([12.5886, 46.0748]).addTo(map)
-
-//Kebabs
-var marker3 = new mapboxgl.Marker().setLngLat([12.587187, 46.070614]).addTo(map)
 
 var avianoPopup = new mapboxgl.Popup()
     .setHTML("<p><em>New RistoPizza</em></p>" +
@@ -101,9 +103,6 @@ var kebabPopup = new mapboxgl.Popup()
         "</ul>" +
         "<a target='_blank' href='https://www.newristobymario.com/'>Click to Visit Website</a").addTo(map)
 
-marker1.setPopup(avianoPopup)
-marker2.setPopup(beFedsPopup)
-marker3.setPopup(kebabPopup)
 
 let newRistoPizza = {
     name: 'New RistoPizza',
