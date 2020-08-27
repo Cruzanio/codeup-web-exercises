@@ -25,4 +25,30 @@ marker1.setPopup(avianoPopup)
 marker2.setPopup(beFedsPopup)
 marker3.setPopup(kebabPopup)
 
+let newRistoPizza = {
+    name: 'New RistoPizza',
+    owner: 'Mario',
+    formality: 'formal'
+}
+
+let beFeds = {
+    name: 'BeFeds',
+    owner: 'Giovanni',
+    formality: 'informal'
+}
+
+let buonKebabs = {
+    name: 'Buonissimo Kebabs',
+    owner: 'The Twins',
+    formality: 'informal'
+}
+
+let avianoEats = [newRistoPizza, beFeds, buonKebabs]
+avianoEats.forEach(function (restaurant, i) {
+    console.log("The owner of " + restaurant.name + " is " + restaurant.owner)
+    console.log("The formality type at " + restaurant.name + " is " + restaurant.formality)
+})
+
+
+
 

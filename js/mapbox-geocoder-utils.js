@@ -33,9 +33,9 @@ function reverseGeocode(coordinates, token) {
             return data.features[0].place_name;
         });
 }
-var   codeUpCor={lng: -98.4935, lat: 29.4264}
+var kebabsLoc ={lng: 12.587187, lat: 46.070614}
 
-reverseGeocode(codeUpCor, MAPBOX_TOKEN2)
+reverseGeocode(kebabsLoc, MAPBOX_TOKEN2)
     .then(function (result) {
-        console.log("Did we find New RistoPizza? " + result)
+        console.log("Did we find Buonissimo Kebabs? " + result)
     })
