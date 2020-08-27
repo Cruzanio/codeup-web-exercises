@@ -13,12 +13,12 @@ function geocode(search, token) {
         });
 }
 
-geocode("Via Ippolito Nievo Nr 2, 33081, Aviano Italy", MAPBOX_TOKEN2)
-    .then(function (result) {
-        console.log('Geocode for New Risto Pizza results: ' + result);
-        map.setCenter(result);
-        map.setZoom(15);
-    });
+// geocode("Via Ippolito Nievo Nr 2, 33081, Aviano Italy", MAPBOX_TOKEN2)
+//     .then(function (result) {
+//         console.log('Geocode for New Risto Pizza results: ' + result);
+//         map.setCenter(result);
+//         map.setZoom(15);
+//     });
 
 //Reverse Geocode
 function reverseGeocode(coordinates, token) {
