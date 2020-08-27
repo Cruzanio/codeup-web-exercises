@@ -19,6 +19,9 @@ var marker3 = new mapboxgl.Marker().setLngLat([12.586885, 46.072371]).addTo(map)
 
 
 var avianoPopup = new mapboxgl.Popup().setHTML("<p><em>Italy</em></p>").addTo(map)
+var codeupPopup = new mapboxgl.Popup().setHTML("<p><em>Codeup</em></p>").addTo(map)
+var geekdomPopup = new mapboxgl.Popup().setHTML("<p><em>Geekdom</em></p>").addTo(map)
 
-
+marker1.setPopup(geekdomPopup)
+marker2.setPopup(codeupPopup)
 marker3.setPopup(avianoPopup)
