@@ -1,5 +1,6 @@
 'use strict';
 
+
 mapboxgl.accessToken = MAPBOX_TOKEN2;
 var map = new mapboxgl.Map({
     container: 'map',
@@ -7,16 +8,21 @@ var map = new mapboxgl.Map({
     center: [12.5881, 46.0695], // starting position [lng, lat]
     zoom: 12// starting zoom
 });
+
+
 document.getElementById('map-reset').addEventListener("click", reset)
 function reset() {
     location.reload(true)
 }
+
+var markers = []
 
 function restaurant1 () {
     geocode("Via Ippolito Nievo Nr 2, 33081, Aviano Italy", MAPBOX_TOKEN2)
         .then(function (result) {
             console.log('Geocode for New Risto Pizza results: ' + result);
             var marker1 = new mapboxgl.Marker().setLngLat([12.586282, 46.073095]).addTo(map)
+            markers.push(marker1)
             map.setCenter(result);
             map.setZoom(17);
             marker1.setPopup(avianoPopup)
@@ -28,6 +34,7 @@ function restaurant2 () {
         .then(function (result) {
             console.log('Geocode for Befeds results: ' + result);
             var marker2 = new mapboxgl.Marker().setLngLat([12.5886, 46.0748]).addTo(map)
+            markers.push(marker2)
             map.setCenter(result);
             map.setZoom(17);
             marker2.setPopup(beFedsPopup)
@@ -39,6 +46,7 @@ function restaurant3 () {
         .then(function (result) {
             console.log('Geocode for Buonissimo Kebabs results: ' + result);
             var marker3 = new mapboxgl.Marker().setLngLat([12.587187, 46.070614]).addTo(map)
+            markers.push(marker3)
             map.setCenter(result);
             map.setZoom(17);
             marker3.setPopup(kebabPopup)
@@ -163,7 +171,25 @@ function findForUser() {
 
 document.getElementById('search').addEventListener('click', findForUser)
 
+function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
 
+function clearMarkers() {
+    setMapOnAll(null);
+}
 
+function showMarkers() {
+    setMapOnAll(map);
+}
 
+var toggleButton = document.getElementById('markers');
+toggleButton.addEventListener('click', clearMarkers)
 
+function setMapOnAll(map) {
+    for (let i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+    }
+}
