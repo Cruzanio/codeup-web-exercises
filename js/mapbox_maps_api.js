@@ -55,24 +55,39 @@ var res3 = document.getElementById('fav3')
 res3.addEventListener('click', restaurant3)
 
 
-var zoom5 = document.getElementById('5')
+var zoom5 = document.getElementById('option1')
 function changeZoom5() {
     map.setZoom(5)
 }
 
-var zoom10 = document.getElementById('10')
+var zoom10 = document.getElementById('option2')
 function changeZoom10() {
     map.setZoom(10)
 }
 
-var zoom15 = document.getElementById('15')
+var zoom15 = document.getElementById('option3')
 function changeZoom15() {
     map.setZoom(15)
 }
+var bigSelect = document.querySelector('.options')
+bigSelect.addEventListener('change', (event) => {
+    if(`${event.target.value}` === '5') {
+        map.setZoom(5)
+    }
+    if(`${event.target.value}` === '10') {
+        map.setZoom(10)
+    }
+    if(`${event.target.value}` === '15') {
+        map.setZoom(15)
+    }
 
-zoom5.addEventListener('click', changeZoom5)
-zoom10.addEventListener('click', changeZoom10)
-zoom15.addEventListener('click', changeZoom15)
+});
+
+
+
+zoom5.addEventListener('onchange', changeZoom5)
+zoom10.addEventListener('onchange', changeZoom10)
+zoom15.addEventListener('onchange', changeZoom15)
 
 
 
@@ -86,7 +101,7 @@ var avianoPopup = new mapboxgl.Popup()
         "<a target='_blank' href='https://www.newristobymario.com/'>Click to Visit Website</a>").addTo(map)
 
 var beFedsPopup = new mapboxgl.Popup()
-    .setHTML("<img src='../img/befed-logo.png' alt='befed-logo'>" +
+    .setHTML("<img src='img/befed-logo.png' alt='befed-logo' class='befed'>" +
         "<p><em>Befeds</em></p>" +
         "<ul>" +
         "<li>Chicken</li>" +
@@ -128,8 +143,31 @@ avianoEats.forEach(function (restaurant, i) {
     console.log("The formality type at " + restaurant.name + " is " + restaurant.formality)
 })
 
+function findForUser() {
+    var userInput = document.getElementById('userSearch')
+    geocode(userInput.value, MAPBOX_TOKEN2)
+        .then(function (result) {
+            console.log('Geocode for ' + userInput.value + ' is: ' + result);
+            // var marker4 = new mapboxgl.Marker().setLngLat([result.value]).addTo(map)
+            map.setCenter(result);
+            map.setZoom(17);
+            // console.log(marker4)
+        });
+}
+
+document.getElementById('search').addEventListener('click', findForUser)
 
 
-
+function placeMarkerAndPopup(info, token, map) {
+    geocode(info.address, token).then(function(coordinates) {
+        var popup = new mapboxgl.Popup()
+            .setHTML(info.popupHTML);
+        var marker = new mapboxgl.Marker()
+            .setLngLat(coordinates)
+            .addTo(map)
+            .setPopup(popup);
+        popup.addTo(map);
+    });
+}
 
 
