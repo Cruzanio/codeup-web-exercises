@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Konami Code</title>
     <link rel="stylesheet" href="css/konami.css">
 </head>
 <body id="bg-img">
-<h1>Start Journey</h1>
+<h1 id="start">Start Journey</h1>
+<h1 id="fail">NOPE!</h1>
 <br>
-<p>Anything to say before you begin?</p>
+<p id="question">Anything to say before you begin?</p>
 <p id="success-banner">You gain the upper hand! 30 Lives added!</p>
 <p id="fail-banner">Let me stop you right there!<br>Try Again!</p>
-<span id="cursor">|</span>
+<span id="cursor">&#x2588</span>
 
 <audio>
     <source src="img/evil-laugh.mp3">
@@ -18,7 +20,7 @@
 </audio>
 
 <script src="js/jquery-2.2.4.js"></script>
-<script src="js/konami.js"
+<script src="js/konami.js"></script>
 <script>
 
 
