@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+        h1 {
+            color: white;
+            text-align: center;
+        }
+        p {
+            text-align: center;
+            font-size: 50px;
+            color: white;
+        }
+        #success-banner {
+            text-align: center;
+            font-size: 50px;
+            color: white;
+        }
+        #fail-banner {
+            text-align: center;
+            font-size: 50px;
+            color: red;
+        }
+    </style>
+    <title>Konami Code</title>
+
+</head>
+<body id="bg-img">
+<h1>Konami Code</h1>
+<br>
+<p>Anything to say before you begin?</p>
+<p id="success-banner">You gain the upper hand! 30 Lives added!</p>
+<p id="fail-banner">Let me stop you right there!<br>Try Again!</p>
+
+<audio>
+    <source src="img/evil-laugh.mp3">
+    <source src="img/Ta%20Da-SoundBible.com-1884170640.mp3">
+</audio>
+
+<script src="js/jquery-2.2.4.js"></script>
+
+<script>
+
+    "use strict";
+
+    $('#bg-img').css('background-image', "url('img/Undertale-Background.jpg')")
+    $('#success-banner').hide()
+    $('#fail-banner').hide()
+
+
+
+    var cheatEnter = ''
+    var fail = new Audio('img/evil-laugh.mp3')
+    var success = new Audio('img/ta-da.mp3')
+    $(document).keyup(function () {
+        var code = '3838404037393739666513'
+        cheatEnter += event.keyCode
+        if (cheatEnter === code) {
+            success.play()
+            $('#success-banner').show()
+            cheatEnter = ''
+        } else if (cheatEnter.length > 22) {
+            $('#bg-img').css('background-image', "url('img/fail-background.jpg')")
+            fail.play()
+            $('#fail-banner').show()
+            cheatEnter = ''
+        }
+    });
+
+</script>
+
+</body>
+</html>
