@@ -74,7 +74,6 @@ bigSelect.addEventListener('change', (event) => {
     if(`${event.target.value}` === '20') {
         map.setZoom(20)
     }
-
 });
 
 
