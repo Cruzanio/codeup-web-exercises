@@ -13,7 +13,7 @@ setInterval(() => {
     }
 }, speed);
 
-$('#bg-img').css('background-image', "url('img/Undertale-Background.jpg')")
+$('#bg-img').css('background-image', "url('img/retro-game-background.jpg')")
 $('#success-banner').hide()
 $('#fail-banner').hide()
 $('#fail').hide()
@@ -25,8 +25,6 @@ var success = new Audio('img/ta-da.mp3')
 $(document).keyup(function () {
     var konamiArray = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]
     cheatEnter.push(event.keyCode)
-    for (var i=0; i <= cheatEnter.length-1; i++) {
-        // if (cheatEnter.length <= 11) {
             if (JSON.stringify(cheatEnter) === JSON.stringify(konamiArray)) {
                 $('#question').hide()
                 $('#cursor').hide()
@@ -44,6 +42,5 @@ $(document).keyup(function () {
             fail.play()
             $('#fail-banner').show()
             cheatEnter = []
-        }
     }
 });

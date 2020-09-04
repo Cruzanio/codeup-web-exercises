@@ -4,30 +4,44 @@ body {
     background-position: center;
     text-align: center;
 }
-h1 {
+
+#fail {
     font-size: 75px;
     color: white;
     text-align: center;
-    text-shadow: 0px 0px 15px purple
+    text-shadow: 0px 0px 15px purple;
 }
+
+#start {
+    font-size: 75px;
+    color: white;
+    text-align: center;
+    text-shadow: 0px 0px 15px purple;
+    box-shadow: 0px 0px 15px purple;
+    background-color: transparent;
+}
+
 p {
     text-align: center;
     font-size: 50px;
     color: white;
     text-shadow: 0px 0px 15px purple;
 }
+
 #success-banner {
     text-align: center;
     font-size: 50px;
     color: white;
     text-shadow: 0px 0px 20px blue;
 }
+
 #fail-banner {
     text-align: center;
     font-size: 50px;
     color: red;
     text-shadow: 0px 0px 20px white;
 }
+
 #cursor {
     font-size: 30px;
 }

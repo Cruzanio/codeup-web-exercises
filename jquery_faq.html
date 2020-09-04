@@ -3,6 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery FAQ</title>
+    <style>
+        .invisible {
+            visibility: hidden;
+        }
+    </style>
 </head>
 <body>
 <h1>National Park Facts</h1>
@@ -59,6 +64,32 @@
 
 <button type="button" id="b1">Show/Hide</button>
 
+<h3>YellowStone</h3>
+<ul>
+    <li>3,472 square miles</li>
+    <li>Highest Point: 11,358 feet </li>
+    <li>Lowest Point: 5,282 feet</li>
+    <li>92 Trailheads</li>
+</ul>
+
+<h3>Yosemite</h3>
+<ul>
+    <li>El Capitan</li>
+    <li>Yosemite Falls</li>
+    <li>Bridalveil Falls</li>
+    <li>Mirror Lake</li>
+</ul>
+
+<h3>Death Valley</h3>
+<ul>
+    <li>El Capitan</li>
+    <li>Yosemite Falls</li>
+    <li>Bridalveil Falls</li>
+    <li>Mirror Lake</li>
+</ul>
+
+<button type="button" id="b2">Last LI Yellow</button>
+
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
         crossorigin="anonymous">
@@ -71,13 +102,21 @@
         $().ready(function () {
             $('dt').click(function() {
                 $(this).css('background-color', 'yellow')
-            })
+            });
             $('dt').dblclick(function() {
                 $(this).css('background-color', 'white')
-            })
-            $('button').click(function () {
-                $('.invisible').css('visibility', 'hidden')
             });
+            $('#b1').click(function() {
+                    $('dd').toggleClass('invisible')
+            });
+            $('#b2').click(function() {
+                $('ul').each(function(index, element)  {
+                    $(element).children().last().css('background-color', 'yellow')
+                });
+            });
+            $('h3').click(function() {
+                $('ul').first().css('font-weight', 'bold')
+            })
         });
     })();
 
