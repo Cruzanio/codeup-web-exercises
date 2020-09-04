@@ -26,15 +26,15 @@ $(document).keyup(function () {
     var konamiArray = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]
     cheatEnter.push(event.keyCode)
     for (var i=0; i <= cheatEnter.length-1; i++) {
-        if (cheatEnter.length <= 11) {
+        // if (cheatEnter.length <= 11) {
             if (JSON.stringify(cheatEnter) === JSON.stringify(konamiArray)) {
                 $('#question').hide()
                 $('#cursor').hide()
                 success.play()
                 $('#success-banner').show()
                 cheatEnter = []
-            }
-        } else {
+            // }
+        } else if (cheatEnter.length > 11){
             $('#question').hide()
             $('#cursor').hide()
             $('#start').hide()
