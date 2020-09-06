@@ -7,6 +7,23 @@
         .invisible {
             visibility: hidden;
         }
+
+        img {
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        #d1 {
+            background-image: url('img/office1.webp');
+        }
+
+        #d2 {
+            background-image: url('img/office2.webp');
+        }
+
+        #d3 {
+            background-image: url('img/office3.webp');
+        }
     </style>
 </head>
 <body>
@@ -67,7 +84,7 @@
 <h3>YellowStone</h3>
 <ul>
     <li>3,472 square miles</li>
-    <li>Highest Point: 11,358 feet </li>
+    <li>Highest Point: 11,358 feet</li>
     <li>Lowest Point: 5,282 feet</li>
     <li>92 Trailheads</li>
 </ul>
@@ -87,8 +104,23 @@
     <li>Bridalveil Falls</li>
     <li>Mirror Lake</li>
 </ul>
-
 <button type="button" id="b2">Last LI Yellow</button>
+<br>
+<div id="d1">
+    <img src="img/office1.webp">
+    <button type="button" id="pbtn1">Swap</button>
+</div>
+
+<div id="d2">
+    <img src="img/office2.webp">
+    <button type="button" id="pbtn2">Swap</button>
+</div>
+
+<div id="d3">
+    <img src="img/office3.webp">
+    <button type="button" id="pbtn3">Swap</button>
+</div>
+
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -100,25 +132,28 @@
     (function () { //IIFE
         'use strict';
         $().ready(function () {
-            $('dt').click(function() {
+            $('dt').click(function () {
                 $(this).css('background-color', 'yellow')
             });
-            $('dt').dblclick(function() {
+            $('dt').dblclick(function () {
                 $(this).css('background-color', 'white')
             });
-            $('#b1').click(function() {
-                    $('dd').toggleClass('invisible')
+            $('#b1').click(function () {
+                $('dd').toggleClass('invisible')
             });
-            $('#b2').click(function() {
-                $('ul').each(function(index, element)  {
+            $('#b2').click(function () {
+                $('ul').each(function (index, element) {
                     $(element).children().last().css('background-color', 'yellow')
                 });
             });
-            $('h3').click(function() {
+            $('h3').click(function () {
                 $(this).next().css('font-weight', 'bold')
             });
-            $('li').click(function() {
+            $('li').click(function () {
                 $(this).parent().children().first().css('color', 'blue')
+            });
+            $('#pbtn1').click(function () {
+
             });
         });
     })();
