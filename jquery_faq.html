@@ -115,7 +115,10 @@
                 });
             });
             $('h3').click(function() {
-                $(this).children().first().css('font-weight', 'bold')
+                $(this).next().css('font-weight', 'bold')
+            });
+            $('li').click(function() {
+                $(this).parent().children().first().css('color', 'blue')
             });
         });
     })();
