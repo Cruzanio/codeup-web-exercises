@@ -7,8 +7,16 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
 
+        body {
+            font-weight: normal;
+        }
+
         .invisible {
             visibility: hidden;
+        }
+
+        .highlight {
+            background-color: yellow;
         }
 
         div {
@@ -50,12 +58,11 @@
             display: none;
         }
     </style>
-
 </head>
 <body>
 
 <main id="news" class="alert alert-info alert-dismissable" role="alert">
-    <h1 >Would you like to sign up for our newsletter?<span class="close">X</span></h1>
+    <h1>Would you like to sign up for our newsletter?<span class="close">X</span></h1>
 </main>
 <h2 class="fadein">Register With Us Now!</h2>
 <h1>National Park Facts</h1>
@@ -173,9 +180,10 @@
             });
             $('#b2').click(function () {
                 $('ul').each(function (index, element) {
-                    $(element).children().last().css('background-color', 'yellow')
+                    $(element).children().last().toggleClass('highlight')
                 });
             });
+            $('ul').hide()
             $('h3').click(function () {
                 $(this).next().css('font-weight', 'bold')
             });
@@ -185,7 +193,7 @@
             $('#pbtn1').click(function () {
                 $('#d1').css('background-image', $('#d2'))
             });
-            $('.close').click(function() {
+            $('.close').click(function () {
                 $('#news').hide()
             });
             $('h3').click(function () {
