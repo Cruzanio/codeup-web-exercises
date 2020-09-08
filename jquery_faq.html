@@ -8,25 +8,44 @@
             visibility: hidden;
         }
 
-        img {
-            max-width: 100px;
-            max-height: 100px;
+        div {
+            height: 200px;
+            width: 200px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            border: 10px solid saddlebrown;
         }
 
         #d1 {
             background-image: url('img/office1.webp');
+            background-size: cover;
+            margin: 2em;
         }
 
         #d2 {
             background-image: url('img/office2.webp');
+            background-size: cover;
+            margin: 2em;
         }
 
         #d3 {
             background-image: url('img/office3.webp');
+            background-size: cover;
+            margin: 2em;
         }
+
+        section {
+            display: flex;
+        }
+
     </style>
 </head>
 <body>
+
+<main id="news">
+    <h1>Would you like to sign up for our newsletter?<span class="close">X</span></h1>
+</main>
 <h1>National Park Facts</h1>
 <dl>
     <dt>Scope of Protection</dt>
@@ -106,21 +125,19 @@
 </ul>
 <button type="button" id="b2">Last LI Yellow</button>
 <br>
-<div id="d1">
-    <img src="img/office1.webp">
-    <button type="button" id="pbtn1">Swap</button>
-</div>
+<section>
+    <div id="d1">
+        <button type="button" id="pbtn1">Swap</button>
+    </div>
 
-<div id="d2">
-    <img src="img/office2.webp">
-    <button type="button" id="pbtn2">Swap</button>
-</div>
+    <div id="d2">
+        <button type="button" id="pbtn2">Swap</button>
+    </div>
 
-<div id="d3">
-    <img src="img/office3.webp">
-    <button type="button" id="pbtn3">Swap</button>
-</div>
-
+    <div id="d3">
+        <button type="button" id="pbtn3">Swap</button>
+    </div>
+</section>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
         integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -153,8 +170,11 @@
                 $(this).parent().children().first().css('color', 'blue')
             });
             $('#pbtn1').click(function () {
-
+                $('#d1').css('background-image', $('#d2'))
             });
+            $('.close').click(function() {
+                $('#news').hide()
+            })
         });
     })();
 
