@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax Blog</title>
+</head>
+<body>
+
+<div id="posts"></div>
+<button type="button" id="refresh">Refresh Blog</button>
+
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script>
+    (function() {
+        "use strict";
+        $().ready(function () {
+            var postLoad = function () {
+                $.get("data/blog.json").done(function (data, status, jqXhr) {
+                    console.log("Request status: " + status);
+                    console.log("Data returned from server:" + data);
+                    var innerHTML = ''
+                    data.forEach(function (item) {
+                        innerHTML += "<h1>" + item["title"] + "</h1><p>" + item["content"] + "</p><p>" + item["date"] + "</p><br>\n"
+                    });
+                    $('#posts').html(innerHTML)
+                });
+            }
+            postLoad()
+
+            $('#refresh').click(function () {
+                postLoad()
+            })
+        });
+    })();
+</script>
+</body>
+</html>
