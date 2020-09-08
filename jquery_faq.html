@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>jQuery FAQ</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
 
         .invisible {
@@ -47,14 +49,13 @@
         .fadein {
             display: none;
         }
-
-
     </style>
+
 </head>
 <body>
 
-<main id="news">
-    <h1>Would you like to sign up for our newsletter?<span class="close">X</span></h1>
+<main id="news" class="alert alert-info alert-dismissable" role="alert">
+    <h1 >Would you like to sign up for our newsletter?<span class="close">X</span></h1>
 </main>
 <h2 class="fadein">Register With Us Now!</h2>
 <h1>National Park Facts</h1>
@@ -190,7 +191,6 @@
             $('h3').click(function () {
                 $(this).next().slideToggle().css('visibility', 'visible')
             });
-
         });
     })();
 </script>
