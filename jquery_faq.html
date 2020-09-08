@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>jQuery FAQ</title>
     <style>
+
         .invisible {
             visibility: hidden;
         }
@@ -39,6 +40,15 @@
             display: flex;
         }
 
+        ul {
+            visibility: hidden;
+        }
+
+        .fadein {
+            display: none;
+        }
+
+
     </style>
 </head>
 <body>
@@ -46,6 +56,7 @@
 <main id="news">
     <h1>Would you like to sign up for our newsletter?<span class="close">X</span></h1>
 </main>
+<h2 class="fadein">Register With Us Now!</h2>
 <h1>National Park Facts</h1>
 <dl>
     <dt>Scope of Protection</dt>
@@ -149,6 +160,7 @@
     (function () { //IIFE
         'use strict';
         $().ready(function () {
+            $('h2').delay(8000).fadeIn(2000)
             $('dt').click(function () {
                 $(this).css('background-color', 'yellow')
             });
@@ -174,10 +186,13 @@
             });
             $('.close').click(function() {
                 $('#news').hide()
-            })
+            });
+            $('h3').click(function () {
+                $(this).next().slideToggle().css('visibility', 'visible')
+            });
+
         });
     })();
-
 </script>
 </body>
 </html>
