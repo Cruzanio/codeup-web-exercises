@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <style>
-
         body {
             font-weight: normal;
         }
@@ -52,10 +51,6 @@
 
         ul {
             visibility: hidden;
-        }
-
-        .fadein {
-            display: none;
         }
     </style>
 </head>
@@ -164,11 +159,10 @@
 </script>
 
 <script>
-
     (function () { //IIFE
         'use strict';
         $().ready(function () {
-            $('h2').delay(8000).fadeIn(2000)
+            $('.fadein').hide().delay(8000).fadeIn(2000)
             $('dt').click(function () {
                 $(this).css('background-color', 'yellow')
             });
