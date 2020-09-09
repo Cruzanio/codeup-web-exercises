@@ -16,5 +16,15 @@
     "sugar"
   ],
   "date": "February 14, 2015"
+}, {
+  "title": "A 3rd Post",
+  "content": "random text here.",
+  "categories": [
+    "family",
+    "candy",
+    "sweets",
+    "sugar"
+  ],
+  "date": "Dated: Today despite my happiness to admit it"
 }
 ]
