@@ -1,0 +1,42 @@
+@font-face {
+    font-family: toolFont;
+    src: url("../fonts/JiSawblade-yjj5.ttf");
+}
+
+body {
+    background-image: url('../img/tools.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    font-size: large;
+}
+
+table {
+    border-style: hidden;
+    border-radius: 20px;
+    opacity: 75%;
+    font-size: large;
+}
+
+th {
+    padding: 1em 2em 1em 2em;
+}
+
+tr {
+    text-align: center;
+}
+
+button {
+    margin-top: 1em;
+    border-radius: 30px;
+    border: 3px solid black !important;
+}
+
+h1 {
+    font-family: toolFont;
+    font-size: 4em;
+}
+
+
+

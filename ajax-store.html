@@ -4,19 +4,9 @@
     <title>Online Store</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <style>
-        th {
-            padding: 1em 2em 1em 2em;
-        }
-        tr {
-            text-align: center;
-        }
-        button {
-            margin-top: 1em;
-        }
-    </style>
+    <link rel="stylesheet" href="css/tools.css">
 </head>
-<body class="container-fluid">
+<body class="container">
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -27,10 +17,10 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <section class="row justify-content-center">
-<h1>My Tool Store</h1>
+<h1 class="m-5">My Tool Store</h1>
 </section>
 <article class="row justify-content-center">
-    <table id="products">
+    <table id="products" class="table table-hover table-dark">
         <thead>
         <tr>
             <th>Title</th>
@@ -43,7 +33,7 @@
     </table>
 </article>
 <div class="row justify-content-center">
-    <button type="button" id="refresh">Refresh Table</button>
+    <button type="button" id="refresh" class="btn btn-success">Refresh Table</button>
 </div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>

@@ -28,7 +28,8 @@
   "title": "Screwdrivers",
   "quantity": 25,
   "categories": [
-    "tool"
+    "tool",
+    "personal"
   ],
   "price": 10
 }
