@@ -1,12 +1,13 @@
 html {
     height: 100%;
+    overflow: hidden;
 }
 body {
     color: #fff;
     overflow-x: hidden;
     height: 100%;
     background-image: linear-gradient(#81D4FA, #2196F3);
-    background-repeat: no-repeat
+    background-repeat: no-repeat;
 }
 
 .card0 {
@@ -104,4 +105,9 @@ input:focus {
     .card1 {
         padding-left: 26px
     }
+}
+
+#map {
+    border: 3px solid black;
+    border-radius: 70px;
 }

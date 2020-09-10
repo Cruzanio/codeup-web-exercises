@@ -2,28 +2,12 @@
     "use strict";
     $().ready(function () {
         var mapLoad = function () {
-            $.get("https://api.openweathermap.org/data/2.5/forecast", {
-                q: "San Antonio",
-                APPID: OPEN_WEATHER_MAP_API,
-                units: 'imperial'
-            }).done(function (data) {
+            $.get("https://api.openweathermap.org/data/2.5/onecall?lat=29.424122&lon=-98.493629&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
+            ).done(function (data) {
                 console.log(data)
-                $('#city').html(data.city['name'])
+                // $('#city').html(data.city['name'])
                 var imgToUse = ""
-                var dataToShow = ""
-                // data.list.forEach(function () {
-                //     if (data.list[0].weather[0].main === 'Clouds') {
-                //         imgToUse = "<img class='card-img-top' src='img/cloudy.png' alt='cloudy'>"
-                //     }
-                //     dataToShow += '<div class="card" style="width: 18rem;">' +
-                //         imgToUse +
-                //         '<div class="card-body">' +
-                //         '<h5 class="card-title">High: + </h5>' +
-                //         "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
-                //         '</div>' +
-                //         '</div>'
-                // })
-                $('#show').html(dataToShow)
+                $('#cityName').html(dataToShow)
             })
         }
         mapLoad()
@@ -32,6 +16,16 @@
             mapLoad()
         })
     });
+
+    //Vanilla JS
+    mapboxgl.accessToken = MAPBOX_TOKEN2;
+    var map = new mapboxgl.Map({
+        container: 'map',
+        style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
+        center: [-98.493629,29.424122], // starting position [lng, lat]
+        zoom: 12// starting zoom
+    });
+
 })();
 
 // (data.list[0].weather[0].main === 'Clouds')
@@ -49,3 +43,8 @@
 //     console.log(forecast)
 //     sameDate = []
 // }
+
+// "https://api.openweathermap.org/data/2.5/forecast", {
+// q: "San Antonio",
+//     APPID: OPEN_WEATHER_MAP_API,
+//     units: 'imperial'

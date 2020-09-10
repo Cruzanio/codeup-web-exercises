@@ -33,9 +33,9 @@ function reverseGeocode(coordinates, token) {
             return data.features[0].place_name;
         });
 }
-var kebabsLoc ={lng: 12.587187, lat: 46.070614}
-
-reverseGeocode(kebabsLoc, MAPBOX_TOKEN2)
-    .then(function (result) {
-        console.log("Did we find Buonissimo Kebabs? " + result)
-    })
+// var kebabsLoc ={lng: 12.587187, lat: 46.070614}
+//
+// reverseGeocode(kebabsLoc, MAPBOX_TOKEN2)
+//     .then(function (result) {
+//         console.log("Did we find Buonissimo Kebabs? " + result)
+//     })
