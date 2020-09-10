@@ -8,21 +8,21 @@
                 units: 'imperial'
             }).done(function (data) {
                 console.log(data)
-                // $('#city').html(data.city['name'])
+                $('#city').html(data.city['name'])
                 var imgToUse = ""
                 var dataToShow = ""
-                data.list.forEach(function () {
-                    if (data.list[0].weather[0].main === 'Clouds') {
-                        imgToUse = "<img class='card-img-top' src='img/cloudy.png' alt='cloudy'>"
-                    }
-                    dataToShow += '<div class="card" style="width: 18rem;">' +
-                        imgToUse +
-                        '<div class="card-body">' +
-                        '<h5 class="card-title">Card title</h5>' +
-                        "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
-                        '</div>' +
-                        '</div>'
-                })
+                // data.list.forEach(function () {
+                //     if (data.list[0].weather[0].main === 'Clouds') {
+                //         imgToUse = "<img class='card-img-top' src='img/cloudy.png' alt='cloudy'>"
+                //     }
+                //     dataToShow += '<div class="card" style="width: 18rem;">' +
+                //         imgToUse +
+                //         '<div class="card-body">' +
+                //         '<h5 class="card-title">High: + </h5>' +
+                //         "<p class='card-text'>Some quick example text to build on the card title and make up the bulk of the card's content.</p>" +
+                //         '</div>' +
+                //         '</div>'
+                // })
                 $('#show').html(dataToShow)
             })
         }
@@ -34,7 +34,7 @@
     });
 })();
 
-
+// (data.list[0].weather[0].main === 'Clouds')
 // //selects for list item
 // for (var i = 0; i <= data.list.length - 1; i++) {
 //     //runs all list items against the i item for same date
