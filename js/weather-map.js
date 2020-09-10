@@ -2,35 +2,15 @@
     "use strict";
     $().ready(function () {
         var mapLoad = function () {
-            $.get("http://api.openweathermap.org/data/2.5/forecast", {
+            $.get("https://api.openweathermap.org/data/2.5/forecast", {
+                q: "San Antonio",
                 APPID: OPEN_WEATHER_MAP_API,
-                q: "San Antonio, US"
+                units: 'imperial'
             }).done(function (data) {
-                console.log(data.list[0].dt_txt.split(' ')[0])
                 console.log(data)
-                $('#city').html(data.city['name'])
+                // $('#city').html(data.city['name'])
                 var imgToUse = ""
                 var dataToShow = ""
-                var high = ""
-                var forecast = []
-                var sameDate = []
-
-                //selects for list item
-                for (var i = 0; i <= data.list.length - 1; i++) {
-                    //runs all list items against the i item for same date
-                    for (var j = 0; j <= data.list.length - 1; j++) {
-                        //if date is the same push the temp of j item to array
-                        if (data.list[i].dt_txt.split(" ")[0] === data.list[j].dt_txt.split(" ")[0]) {
-                            sameDate.push(data.list[j].main['temp_max'])
-                            console.log(sameDate)
-                            // forecast.push((Math.max.apply(Math, sameDate)))
-                            // console.log(forecast)
-
-                        }
-                    }
-                    sameDate = []
-                }
-
                 data.list.forEach(function () {
                     if (data.list[0].weather[0].main === 'Clouds') {
                         imgToUse = "<img class='card-img-top' src='img/cloudy.png' alt='cloudy'>"
@@ -53,3 +33,19 @@
         })
     });
 })();
+
+
+// //selects for list item
+// for (var i = 0; i <= data.list.length - 1; i++) {
+//     //runs all list items against the i item for same date
+//     for (var j = 0; j <= data.list.length - 1; j++) {
+//         //if date is the same push the temp of j item to array
+//         if (data.list[i].dt_txt.split(" ")[0] === data.list[j].dt_txt.split(" ")[0]) {
+//             sameDate.push(data.list[j].main['temp_max'])
+//
+//         }
+//     }
+//     forecast.push((Math.max.apply(Math, sameDate)))
+//     console.log(forecast)
+//     sameDate = []
+// }
