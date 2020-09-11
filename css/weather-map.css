@@ -77,13 +77,14 @@ input:focus {
 }
 
 .fa-search {
-    color: #607D8B;
-    background-color: #E1F5FE;
+    color: white;
+    background-color: transparent;
     font-size: 20px;
     padding: 20px;
     width: 20%;
     cursor: pointer;
     border-top-right-radius: 20px;
+    text-align: center;
 }
 
 .light-text {
@@ -112,7 +113,5 @@ input:focus {
 }
 
 #bg {
-    background-size: cover;
     background-repeat: no-repeat;
-    object-fit: fill;
 }

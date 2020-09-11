@@ -6,30 +6,58 @@
             ).done(function (data) {
                 console.log(data)
                 $('#cityName').html('San Antonio')
-                $('#weatherType').html(data.daily[0].weather[0].description)
-                if (data.daily[0].weather[0].description === 'light rain') {
+                $('#weatherType').html(data.current.weather[0].main)
+                if (data.current.weather[0].main === 'Rain') {
                     $('#bg').css('background-image', "url(img/rain.jpg)")
                     $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
-                } else if (data.daily[0].weather[0].description === 'cloudy') {
-                        $('#bg').css('background-image', "url(img/rain.jpg)")
-                } else if (data.daily[0].weather[0].description === 'sunny') {
+                } else if (data.current.weather[0].main === 'Clouds') {
+                        $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                    $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
+                    $('.card1').css('color', 'black')
+                } else if (data.current.weather[0].main === 'Sun') {
                     $('#bg').css('background-image', "url(img/xp.jpg)")
+                    $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                 }
-
                 $('#degrees').html(Math.round(data.current.temp) + '&#176')
                 var unix = data.current.dt * 1000
                 var date = new Date(unix)
-                $('#date').html( dayInput(date.getDay()) + ' ' + (date.getMonth()+1) + ', ' + date.getFullYear() + '<br>\n' +
+                $('#date').html( dayInput(date.getDay()) + ' ' + date.getDate() + ', ' + date.getFullYear() + '<br>\n' +
                     'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
-                $('#cloudy').html(data.daily[0].clouds + '%')
-                $('#humidity').html(data.daily[0].humidity + '%')
-                $('#wind').html(data.daily[0].wind_speed + ' km/h')
+                $('#cloudy').html(data.current.clouds + '%')
+                $('#humidity').html(data.current.humidity + '%')
+                $('#wind').html(data.current.wind_speed + ' km/h')
                 $('#rain').html(data.daily[0].rain + ' mm')
             })
         }
         mapLoad()
 
-        $('#refresh').click(function () {
+
+        var newDay = function (dayOfTheWeek) {
+            for (var i = 0; i <= data.daily.length-1; i++)
+            $('#cityName').html('San Antonio')
+            $('#weatherType').html(data.daily[0].weather[0].description)
+            if (data.daily[0].weather[0].description === 'light rain') {
+                $('#bg').css('background-image', "url(img/rain.jpg)")
+                $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
+            } else if (data.daily[0].weather[0].description === 'cloudy') {
+                $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
+            } else if (data.daily[0].weather[0].description === 'sunny') {
+                $('#bg').css('background-image', "url(img/xp.jpg)")
+                $('#icon').html('<img class="image mt-5" src="img/sun.png">')
+            }
+            $('#degrees').html(Math.round(data.current.temp) + '&#176')
+            var unix = data.current.dt * 1000
+            var date = new Date(unix)
+            $('#date').html( dayInput(date.getDay()) + ' ' + (date.getMonth()+1) + ', ' + date.getFullYear() + '<br>\n' +
+                'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
+            $('#cloudy').html(data.daily[0].clouds + '%')
+            $('#humidity').html(data.daily[0].humidity + '%')
+            $('#wind').html(data.daily[0].wind_speed + ' km/h')
+            $('#rain').html(data.daily[0].rain + ' mm')
+        }
+
+        $('#update').click(function () {
             mapLoad()
         })
         function dayInput(input) {
@@ -67,6 +95,7 @@
         center: [-98.493629, 29.424122], // starting position [lng, lat]
         zoom: 12// starting zoom
     });
+
 
 })();
 
