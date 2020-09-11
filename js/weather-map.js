@@ -16,7 +16,7 @@
                     $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
                     $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
                     $('.card1').css('color', 'black')
-                } else if (data.current.weather[0].main === 'Sun') {
+                } else if (data.current.weather[0].main === 'Clear') {
                     $('#bg').css('background-image', "url(img/xp.jpg)")
                     $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                 }
@@ -28,23 +28,24 @@
                 $('#cloudy').html(data.current.clouds + '%')
                 $('#humidity').html(data.current.humidity + '%')
                 $('#wind').html(data.current.wind_speed + ' km/h')
-                $('#rain').html(data.daily[0].rain + ' mm')
+                if (data.daily[0].rain === undefined) {
+                    $('#rain').html('No Available Data')
+                } else {
+                    $('#rain').html(data.daily[0].rain + ' mm')
+                }
+
             })
         }
         currentWeatherLoad()
-
 
         var newDay = function (day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function dataRead(data) {
                 $('#cityName').html('Diff Name')
-                console.log(data)
                 for (var i = 0; i <= data.daily.length - 1; i++) {
-                    console.log('here')
                     var unix = data.daily[i].dt * 1000
                     var date = new Date(unix)
                     console.log(dayInput(date.getDay()))
-                    console.log(day)
                     if ((dayInput(date.getDay()) === day)) {
                         $('#weatherType').html(data.daily[i].weather[0].description)
                         if (data.daily[i].weather[0].main === 'Rain') {
@@ -67,7 +68,11 @@
                         $('#cloudy').html(data.daily[i].clouds + '%')
                         $('#humidity').html(data.daily[i].humidity + '%')
                         $('#wind').html(data.daily[i].wind_speed + ' km/h')
-                        $('#rain').html(data.daily[i].rain + ' mm')
+                        if (data.daily[i].rain === undefined) {
+                            $('#rain').html('No Available Data')
+                        } else {
+                            $('#rain').html(data.daily[i].rain + ' mm')
+                        }
                     }
                 }
             })
@@ -87,7 +92,6 @@
             geocode(userInput.value, MAPBOX_TOKEN2)
                 .then(function (result) {
                     console.log('Geocode for ' + userInput.value + ' is: ' + result);
-                    console.log(result)
                     var userMarker = new mapboxgl.Marker()
                         .setLngLat(result)
                         .addTo(map)
@@ -96,9 +100,13 @@
                     lat = result[1]
                     lon = result[0]
                     var LLObj = {lng: lon, lat: lat}
-                    console.log(reverseGeocode(LLObj, MAPBOX_TOKEN2))
+                    currentWeatherLoad()
+                    reverseGeocode(LLObj, MAPBOX_TOKEN2).then(function (data) {
+                        return data
+                    })
                 });
         }
+
         document.getElementById('search').addEventListener('click', findForUser)
 
         function dayInput(input) {

@@ -25,14 +25,26 @@ function reverseGeocode(coordinates, token) {
     var baseUrl = 'https://api.mapbox.com';
     var endPoint = '/geocoding/v5/mapbox.places/';
     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
-        .then(function(res) {
-            return (res.json());
+        .then(response => response.json())
+        .then(data => {
+            var address = data.features[0].place_name
+            console.log(address.split(" "))
+            return address.split(" ")[3]
         })
-        // to get all the data from the request, comment out the following three lines...
-        .then(function(data) {
-            return data.features[0].place_name;
-        });
-}
+};
+
+
+//         .then(function(res) {
+//             // return (res.json());
+//         })
+//         // to get all the data from the request, comment out the following three lines...
+//         .then(function(data) {
+//             console.log(data)
+//             return data.features[0].place_name;
+//         });
+// }
+
+
 // var kebabsLoc ={lng: 12.587187, lat: 46.070614}
 //
 // reverseGeocode(kebabsLoc, MAPBOX_TOKEN2)
