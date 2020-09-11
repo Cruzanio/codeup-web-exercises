@@ -63,10 +63,10 @@
                 tableLoad()
             })
 
-                function highestPrice() {
+                function pricePoints() {
                     var newHigh = 0
                     var toolNameHigh = ''
-                    var newLow = 200
+                    var newLow = Infinity
                     var toolNameLow = ''
                     var combinedPrice = 0
                     $.get("data/inventory.json").done(function (data) {
@@ -87,7 +87,7 @@
                         $('#lowest').html('Lowest Cost is the ' + toolNameLow + ' at $' + newLow)
                     })
                 }
-                highestPrice()
+                pricePoints()
         });
 
         // TODO: Take the data from inventory.json and append it to the products table
