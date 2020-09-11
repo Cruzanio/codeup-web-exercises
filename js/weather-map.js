@@ -5,9 +5,21 @@
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=29.424122&lon=-98.493629&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function (data) {
                 console.log(data)
-                // $('#city').html(data.city['name'])
-                var imgToUse = ""
-                $('#cityName').html(dataToShow)
+                $('#cityName').html('San Antonio')
+                $('#weatherType').html(data.daily[0].weather[0].description)
+                if (data.daily[0].weather[0].description === 'light rain') {
+                    console.log('yes')
+                    $('.card1').css('background-image', "url('img/rain.mp4')")
+                }
+                $('#degrees').html(Math.round(data.current.temp) + '&#176')
+                var unix = data.current.dt * 1000
+                var date = new Date(unix)
+                $('#date').html( dayInput(date.getDay()) + ' ' + (date.getMonth()+1) + ', ' + date.getFullYear() + '<br>\n' +
+                    'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
+                $('#cloudy').html(data.daily[0].clouds + '%')
+                $('#humidity').html(data.daily[0].humidity + '%')
+                $('#wind').html(data.daily[0].wind_speed + ' km/h')
+                $('#rain').html(data.daily[0].rain + ' mm')
             })
         }
         mapLoad()
@@ -15,6 +27,32 @@
         $('#refresh').click(function () {
             mapLoad()
         })
+        function dayInput(input) {
+            switch (input) {
+                case 0:
+                    return "Sunday"
+                    break;
+                case 1:
+                    return "Monday"
+                    break;
+                case 2:
+                    return "Tuesday"
+                    break;
+                case 3:
+                    return "Wednesday"
+                    break;
+                case 4:
+                    return "Thursday"
+                    break;
+                case 5:
+                    return "Friday"
+                    break;
+                case 6:
+                    return "Saturday"
+                    break;
+            }
+        }
+
     });
 
     //Vanilla JS
@@ -22,7 +60,7 @@
     var map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
-        center: [-98.493629,29.424122], // starting position [lng, lat]
+        center: [-98.493629, 29.424122], // starting position [lng, lat]
         zoom: 12// starting zoom
     });
 
@@ -48,3 +86,13 @@
 // q: "San Antonio",
 //     APPID: OPEN_WEATHER_MAP_API,
 //     units: 'imperial'
+
+// var tempList = []
+// for (var i = 1; i <= data.daily.length - 1; i++) {
+//     for (var j = 0; j <= data.daily[i].temp.length - 1; j++) {
+//         for (var y = 0; y <= data.daily[i].temp.length - 1)
+//             tempList.push(data.daily[i].temp[j])
+//     }
+//     console.log(tempList)
+//     tempList = []
+// }
