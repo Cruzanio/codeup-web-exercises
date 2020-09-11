@@ -35,6 +35,9 @@
 <div class="row justify-content-center">
     <button type="button" id="refresh" class="btn btn-success">Refresh Table</button>
 </div>
+<div id="highest"></div>
+<div id="lowest"></div>
+<div id="average"></div>
 
 <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
@@ -59,6 +62,32 @@
             $('#refresh').click(function () {
                 tableLoad()
             })
+
+                function highestPrice() {
+                    var newHigh = 0
+                    var toolNameHigh = ''
+                    var newLow = 200
+                    var toolNameLow = ''
+                    var combinedPrice = 0
+                    $.get("data/inventory.json").done(function (data) {
+                        console.log(data)
+                        for (var i = 0; i <= data.length-1; i++) {
+                            if (data[i].price > newHigh) {
+                                newHigh = data[i].price
+                                toolNameHigh = data[i].title
+                            }
+                            if (data[i].price < newLow) {
+                                newLow = data[i].price
+                                toolNameLow = data[i].title
+                            }
+                            combinedPrice += data[i].price
+                        }
+                        $('#average').html('Average price is: $' + combinedPrice / (data.length-1))
+                        $('#highest').html('Highest Cost is the ' + toolNameHigh + ' at $' + newHigh)
+                        $('#lowest').html('Lowest Cost is the ' + toolNameLow + ' at $' + newLow)
+                    })
+                }
+                highestPrice()
         });
 
         // TODO: Take the data from inventory.json and append it to the products table
