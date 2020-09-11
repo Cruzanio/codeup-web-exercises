@@ -8,9 +8,14 @@
                 $('#cityName').html('San Antonio')
                 $('#weatherType').html(data.daily[0].weather[0].description)
                 if (data.daily[0].weather[0].description === 'light rain') {
-                    console.log('yes')
-                    $('.card1').css('background-image', "url('img/rain.mp4')")
+                    $('#bg').css('background-image', "url(img/rain.jpg)")
+                    $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
+                } else if (data.daily[0].weather[0].description === 'cloudy') {
+                        $('#bg').css('background-image', "url(img/rain.jpg)")
+                } else if (data.daily[0].weather[0].description === 'sunny') {
+                    $('#bg').css('background-image', "url(img/xp.jpg)")
                 }
+
                 $('#degrees').html(Math.round(data.current.temp) + '&#176')
                 var unix = data.current.dt * 1000
                 var date = new Date(unix)
@@ -52,7 +57,6 @@
                     break;
             }
         }
-
     });
 
     //Vanilla JS
