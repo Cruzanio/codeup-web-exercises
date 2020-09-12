@@ -3,11 +3,11 @@
     $().ready(function () {
         var lat = 29.424122
         var lon = -98.493629
+        $('#cityName').html('San Antonio')
         var currentWeatherLoad = function () {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function (data) {
                 console.log(data)
-                $('#cityName').html('San Antonio')
                 $('#weatherType').html(data.current.weather[0].main)
                 if (data.current.weather[0].main === 'Rain') {
                     $('#bg').css('background-image', "url(img/rain.jpg)")
@@ -41,7 +41,6 @@
         var newDay = function (day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function dataRead(data) {
-                $('#cityName').html('Diff Name')
                 for (var i = 0; i <= data.daily.length - 1; i++) {
                     var unix = data.daily[i].dt * 1000
                     var date = new Date(unix)
@@ -49,7 +48,6 @@
                     if ((dayInput(date.getDay()) === day)) {
                         $('#weatherType').html(data.daily[i].weather[0].description)
                         if (data.daily[i].weather[0].main === 'Rain') {
-                            console.log(data.daily[i].weather[0].main)
                             $('#bg').css('background-image', "url(img/rain.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
                             $('.card1').css('color', 'white')
@@ -62,6 +60,7 @@
                             $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                             $('.card1').css('color', 'white')
                         }
+                        $('#Sunday').append()
                         $('#degrees').html(Math.round(data.daily[i].temp.max) + '&#176')
                         $('#date').html(dayInput(date.getDay()) + ' ' + date.getDate() + ', ' + date.getFullYear() + '<br>\n' +
                             'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
@@ -79,6 +78,8 @@
         }
 
         $('#update').click(function () {
+            lat = 29.424122
+            lon = -98.493629
             currentWeatherLoad()
         })
 
@@ -91,21 +92,30 @@
             var userInput = document.getElementById('userSearch')
             geocode(userInput.value, MAPBOX_TOKEN2)
                 .then(function (result) {
-                    console.log('Geocode for ' + userInput.value + ' is: ' + result);
                     var userMarker = new mapboxgl.Marker()
                         .setLngLat(result)
                         .addTo(map)
+                        .setDraggable(true)
                     map.setCenter(result);
                     map.setZoom(14);
+
                     lat = result[1]
                     lon = result[0]
                     var LLObj = {lng: lon, lat: lat}
-                    currentWeatherLoad()
-                    reverseGeocode(LLObj, MAPBOX_TOKEN2).then(function (data) {
-                        return data
+                    reverseGeocode(LLObj, MAPBOX_TOKEN2)
+                        .then(function (data) {
+                            console.log(data)
+                        // $('#cityName').html(data)
                     })
+                    currentWeatherLoad()
                 });
         }
+
+        // userMarker.mouseup(function() {
+        //     var latLng = userMarker.getPosition()
+        //     map.setCenter(latLng)
+        //     map.setZoom(17)
+        // })
 
         document.getElementById('search').addEventListener('click', findForUser)
 

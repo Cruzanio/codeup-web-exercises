@@ -28,8 +28,8 @@ function reverseGeocode(coordinates, token) {
         .then(response => response.json())
         .then(data => {
             var address = data.features[0].place_name
-            console.log(address.split(" "))
-            return address.split(" ")[3]
+            console.log(address)
+            // return address.split(" ")[3]
         })
 };
 
