@@ -3,6 +3,15 @@
     $().ready(function () {
         var lat = 29.424122
         var lon = -98.493629
+
+        mapboxgl.accessToken = MAPBOX_TOKEN2;
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
+            center: [lon, lat], // starting position [lng, lat]
+            zoom: 12// starting zoom
+        });
+
         $('#cityName').html('San Antonio')
         var currentWeatherLoad = function () {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
@@ -46,7 +55,6 @@
                     var date = new Date(unix)
                     console.log(dayInput(date.getDay()))
                     if ((dayInput(date.getDay()) === day)) {
-                        $('#weatherType').html(data.daily[i].weather[0].description)
                         if (data.daily[i].weather[0].main === 'Rain') {
                             $('#bg').css('background-image', "url(img/rain.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
@@ -60,7 +68,7 @@
                             $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                             $('.card1').css('color', 'white')
                         }
-                        $('#Sunday').append()
+                        $('#weatherType').html(data.daily[i].weather[0].description)
                         $('#degrees').html(Math.round(data.daily[i].temp.max) + '&#176')
                         $('#date').html(dayInput(date.getDay()) + ' ' + date.getDate() + ', ' + date.getFullYear() + '<br>\n' +
                             'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
@@ -88,6 +96,24 @@
             newDay(dayOut)
         })
 
+        function createMarker(LLObj) {
+            var userMarker = new mapboxgl.Marker()
+                .setLngLat(LLObj)
+                .addTo(map)
+                .setDraggable(true)
+            map.setCenter(LLObj);
+            map.setZoom(14);
+            function onDragEnd() {
+                var lngLat = userMarker.getLngLat()
+                lat = lngLat.lat
+                lon = lngLat.lng
+                map.setCenter(lngLat)
+                map.setZoom(17)
+                currentWeatherLoad()
+            }
+            userMarker.on('dragend', onDragEnd)
+        }
+
         function findForUser() {
             var userInput = document.getElementById('userSearch')
             geocode(userInput.value, MAPBOX_TOKEN2)
@@ -96,7 +122,6 @@
                     lon = result[0]
                     var LLObj = {lng: lon, lat: lat}
                     createMarker(LLObj)
-
                     reverseGeocode(LLObj, MAPBOX_TOKEN2)
                         .then(function (data) {
                             console.log(data)
@@ -104,21 +129,6 @@
                     })
                     currentWeatherLoad()
                 });
-        }
-
-        function createMarker(LLObj) {
-            var userMarker = new mapboxgl.Marker()
-                .setLngLat(LLObj)
-                .addTo(map)
-                .setDraggable(true)
-                map.setCenter(LLObj);
-                map.setZoom(14);
-            function onDragEnd() {
-                var lngLat = userMarker.getLngLat()
-                map.setCenter(lngLat)
-                map.setZoom(17)
-            }
-            userMarker.on('dragend', onDragEnd)
         }
 
         document.getElementById('search').addEventListener('click', findForUser)
@@ -148,13 +158,5 @@
                     break;
             }
         }
-    });
-
-    mapboxgl.accessToken = MAPBOX_TOKEN2;
-    var map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/mapbox/satellite-streets-v11', // stylesheet location
-        center: [-98.493629, 29.424122], // starting position [lng, lat]
-        zoom: 12// starting zoom
     });
 })();
