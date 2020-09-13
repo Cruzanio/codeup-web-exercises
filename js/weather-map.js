@@ -13,37 +13,59 @@
         });
 
         $('#cityName').html('San Antonio')
+
         var currentWeatherLoad = function () {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function (data) {
-                console.log(data)
-                $('#weatherType').html(data.current.weather[0].main)
-                if (data.current.weather[0].main === 'Rain') {
-                    $('#bg').css('background-image', "url(img/rain.jpg)")
-                    $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
-                } else if (data.current.weather[0].main === 'Clouds') {
-                    $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
-                    $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
-                    $('.card1').css('color', 'black')
-                } else if (data.current.weather[0].main === 'Clear') {
-                    $('#bg').css('background-image', "url(img/xp.jpg)")
-                    $('#icon').html('<img class="image mt-5" src="img/sun.png">')
-                }
-                $('#degrees').html(Math.round(data.current.temp) + '&#176')
-                var unix = data.current.dt * 1000
-                var date = new Date(unix)
-                $('#date').html(dayInput(date.getDay()) + ' ' + date.getDate() + ', ' + date.getFullYear() + '<br>\n' +
-                    'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
-                $('#cloudy').html(data.current.clouds + '%')
-                $('#humidity').html(data.current.humidity + '%')
-                $('#wind').html(data.current.wind_speed + ' km/h')
-                if (data.daily[0].rain === undefined) {
-                    $('#rain').html('No Available Data')
-                } else {
-                    $('#rain').html(data.daily[0].rain + ' mm')
-                }
+                    console.log(data)
+                    $('#weatherType').html(data.current.weather[0].main)
+                    $('#degrees').html(Math.round(data.current.temp) + '&#176')
+                    $('#cloudy').html(data.current.clouds + '%')
+                    $('#humidity').html(data.current.humidity + '%')
+                    $('#wind').html(data.current.wind_speed + ' km/h')
+                    var unix = data.current.dt * 1000
+                    var date = new Date(unix)
+                    $('#date').html(dayInput(date.getDay()) + ' ' + date.getDate() + ', ' + date.getFullYear() + '<br>\n' +
+                        'Last Updated: ' + date.getHours() + ':' + date.getMinutes())
 
-            })
+                    if (data.daily[0].rain === undefined) {
+                        $('#rain').html('No Available Data')
+                    } else {
+                        $('#rain').html(data.daily[0].rain + ' mm')
+                    }
+
+                    if (data.current.weather[0].main === 'Rain') {
+                        // $('#bg').css('background-image', "url(img/rain.jpg)")
+                        $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
+                    } else if (data.current.weather[0].main === 'Clouds') {
+                        // $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                        $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
+                        // $('.card1').css('color', 'black')
+                    } else if (data.current.weather[0].main === 'Clear') {
+                        // $('#bg').css('background-image', "url(img/xp.jpg)")
+                        $('#icon').html('<img class="image mt-5" src="img/sun.png">')
+                    }
+                    for (var i = 1; i <= data.daily.length - 1; i++) {
+                        unix = data.daily[i].dt * 1000
+                        date = new Date(unix)
+                        if (dayInput(date.getDay()) === 'Sunday') {
+                            $('#Sunday').html('Sunday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Monday') {
+                            $('#Monday').html('Monday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Tuesday') {
+                            $('#Tuesday').html('Tuesday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Wednesday') {
+                            $('#Wednesday').html('Wednesday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Thursday') {
+                            $('#Thursday').html('Thursday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Friday') {
+                            $('#Friday').html('Friday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        } else if (dayInput(date.getDay()) === 'Saturday') {
+                            $('#Saturday').html('Saturday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                        }
+                    }
+                }
+            )
         }
         currentWeatherLoad()
 
@@ -53,18 +75,17 @@
                 for (var i = 0; i <= data.daily.length - 1; i++) {
                     var unix = data.daily[i].dt * 1000
                     var date = new Date(unix)
-                    console.log(dayInput(date.getDay()))
                     if ((dayInput(date.getDay()) === day)) {
                         if (data.daily[i].weather[0].main === 'Rain') {
-                            $('#bg').css('background-image', "url(img/rain.jpg)")
+                            // $('#bg').css('background-image', "url(img/rain.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
                             $('.card1').css('color', 'white')
                         } else if (data.daily[i].weather[0].main === 'Clouds') {
-                            $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                            // $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
                             $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
-                            $('.card1').css('color', 'black')
+                            // $('.card1').css('color', 'black')
                         } else if (data.daily[i].weather[0].main === 'Clear') {
-                            $('#bg').css('background-image', "url(img/xp.jpg)")
+                            // $('#bg').css('background-image', "url(img/xp.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                             $('.card1').css('color', 'white')
                         }
@@ -92,7 +113,7 @@
         })
 
         $('.dayOfTheWeek').click(function () {
-            var dayOut = ($(this).html())
+            var dayOut = $(this).attr('id')
             newDay(dayOut)
         })
 
@@ -103,6 +124,7 @@
                 .setDraggable(true)
             map.setCenter(LLObj);
             map.setZoom(14);
+
             function onDragEnd() {
                 var lngLat = userMarker.getLngLat()
                 lat = lngLat.lat
@@ -111,6 +133,7 @@
                 map.setZoom(17)
                 currentWeatherLoad()
             }
+
             userMarker.on('dragend', onDragEnd)
         }
 
@@ -125,8 +148,8 @@
                     reverseGeocode(LLObj, MAPBOX_TOKEN2)
                         .then(function (data) {
                             console.log(data)
-                        // $('#cityName').html(data)
-                    })
+                            // $('#cityName').html(data)
+                        })
                     currentWeatherLoad()
                 });
         }
