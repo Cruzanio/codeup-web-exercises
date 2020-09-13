@@ -92,16 +92,11 @@
             var userInput = document.getElementById('userSearch')
             geocode(userInput.value, MAPBOX_TOKEN2)
                 .then(function (result) {
-                    var userMarker = new mapboxgl.Marker()
-                        .setLngLat(result)
-                        .addTo(map)
-                        .setDraggable(true)
-                    map.setCenter(result);
-                    map.setZoom(14);
-
                     lat = result[1]
                     lon = result[0]
                     var LLObj = {lng: lon, lat: lat}
+                    createMarker(LLObj)
+
                     reverseGeocode(LLObj, MAPBOX_TOKEN2)
                         .then(function (data) {
                             console.log(data)
@@ -111,11 +106,20 @@
                 });
         }
 
-        // userMarker.mouseup(function() {
-        //     var latLng = userMarker.getPosition()
-        //     map.setCenter(latLng)
-        //     map.setZoom(17)
-        // })
+        function createMarker(LLObj) {
+            var userMarker = new mapboxgl.Marker()
+                .setLngLat(LLObj)
+                .addTo(map)
+                .setDraggable(true)
+                map.setCenter(LLObj);
+                map.setZoom(14);
+            function onDragEnd() {
+                var lngLat = userMarker.getLngLat()
+                map.setCenter(lngLat)
+                map.setZoom(17)
+            }
+            userMarker.on('dragend', onDragEnd)
+        }
 
         document.getElementById('search').addEventListener('click', findForUser)
 
