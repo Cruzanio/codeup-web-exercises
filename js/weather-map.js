@@ -15,7 +15,7 @@
         $('#update').html('Click to show current weather for: San Antonio')
         $('#cityName').html('San Antonio')
 
-        var currentWeatherLoad = function () {
+        function currentWeatherLoad() {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function (data) {
                     $('#weatherType').html(data.current.weather[0].main)
@@ -74,6 +74,7 @@
                 }
             )
         }
+
         currentWeatherLoad()
 
         //Takes the id of clicked item and runs newDay
@@ -83,7 +84,7 @@
         })
 
         //Takes in the day from above and checks forecast array displaying info of matching day
-        var newDay = function (day) {
+        function newDay(day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function dataRead(data) {
                 for (var i = 0; i <= data.daily.length - 1; i++) {
@@ -125,9 +126,25 @@
         }
 
         //Displays current weather for selected place
-        $('#update').click(function () {
-            currentWeatherLoad()
-        })
+        $('#update').click(currentWeatherLoad)
+
+        function findForUser() {
+            var userInput = document.getElementById('userSearch')
+            geocode(userInput.value, MAPBOX_TOKEN2)
+                .then(function (result) {
+                    console.log(result)
+                    lat = result[1]
+                    lon = result[0]
+                    var LLObj = {lng: lon, lat: lat}
+                    createMarker(LLObj)
+                    reverseGeocode(LLObj, MAPBOX_TOKEN2)
+                        .then(function (data) {
+                            $('#cityName').html(data)
+                            $('#update').html('Show Current Weather for: ' + data)
+                        })
+                    currentWeatherLoad()
+                });
+        }
 
         function createMarker(LLObj) {
             var userMarker = new mapboxgl.Marker()
@@ -148,25 +165,7 @@
             userMarker.on('dragend', onDragEnd)
         }
 
-        function findForUser() {
-            var userInput = document.getElementById('userSearch')
-            geocode(userInput.value, MAPBOX_TOKEN2)
-                .then(function (result) {
-                    console.log(result)
-                    lat = result[1]
-                    lon = result[0]
-                    var LLObj = {lng: lon, lat: lat}
-                    createMarker(LLObj)
-                    reverseGeocode(LLObj, MAPBOX_TOKEN2)
-                        .then(function (data) {
-                            $('#cityName').html(data)
-                            $('#update').html('Show Current Weather for: ' + data)
-                        })
-                    currentWeatherLoad()
-                });
-        }
-
-        document.getElementById('search').addEventListener('click', findForUser)
+        $('#search').click(findForUser)
 
         function dayInput(input) {
             switch (input) {
@@ -193,5 +192,6 @@
                     break;
             }
         }
+
     });
 })();
