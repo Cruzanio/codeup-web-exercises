@@ -45,23 +45,24 @@
                         // $('#bg').css('background-image', "url(img/xp.jpg)")
                         $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                     }
+
                     for (var i = 1; i <= data.daily.length - 1; i++) {
                         unix = data.daily[i].dt * 1000
                         date = new Date(unix)
                         if (dayInput(date.getDay()) === 'Sunday') {
-                            $('#Sunday').html('Sunday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Sunday').html('<p>Sunday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Monday') {
-                            $('#Monday').html('Monday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Monday').html('<p>Monday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Tuesday') {
-                            $('#Tuesday').html('Tuesday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Tuesday').html('<p>Tuesday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Wednesday') {
-                            $('#Wednesday').html('Wednesday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Wednesday').html('<p>Wednesday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Thursday') {
-                            $('#Thursday').html('Thursday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Thursday').html('<p>Thursday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Friday') {
-                            $('#Friday').html('Friday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Friday').html('<p>Friday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         } else if (dayInput(date.getDay()) === 'Saturday') {
-                            $('#Saturday').html('Saturday H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
+                            $('#Saturday').html('<p>Saturday</p>' + 'H: ' + Math.round(data.daily[i].temp.max) + ' ' + 'L: ' + Math.round(data.daily[i].temp.min))
                         }
                     }
                 }

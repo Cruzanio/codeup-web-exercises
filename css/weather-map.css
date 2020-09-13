@@ -115,3 +115,12 @@ input:focus {
 #bg {
     background-repeat: no-repeat;
 }
+
+.dayOfTheWeek p{
+    display: inline-block;
+}
+
+.dayOfTheWeek {
+    display: flex;
+    justify-content: space-between;
+}
