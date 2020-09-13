@@ -108,8 +108,6 @@
         }
 
         $('#update').click(function () {
-            lat = 29.424122
-            lon = -98.493629
             currentWeatherLoad()
         })
 
