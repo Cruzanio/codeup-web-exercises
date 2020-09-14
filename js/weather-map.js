@@ -137,13 +137,13 @@
         function findForUser() {
             var userInput = document.getElementById('userSearch')
             if (userInput.value === 'DevTools') {
-                $('#map').hide()
-                $('#NA').show()
+                $('#map').fadeOut(3000)
+                $('#NA').delay(3000).slideDown()
                 $('.tv').click(function () {
                     $('.puppiness').fadeIn(5000)
                 }).dblclick(function () {
-                    $('#NA').hide()
-                    $('#map').show()
+                    $('#NA').slideUp()
+                    $('#map').delay(500).slideDown()
                 })
                 document.getElementById('NA').scrollIntoView()
             } else {
