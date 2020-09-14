@@ -31,18 +31,6 @@ function reverseGeocode(coordinates, token) {
         })
 };
 
-
-//         .then(function(res) {
-//             // return (res.json());
-//         })
-//         // to get all the data from the request, comment out the following three lines...
-//         .then(function(data) {
-//             console.log(data)
-//             return data.features[0].place_name;
-//         });
-// }
-
-
 // var kebabsLoc ={lng: 12.587187, lat: 46.070614}
 //
 // reverseGeocode(kebabsLoc, MAPBOX_TOKEN2)
