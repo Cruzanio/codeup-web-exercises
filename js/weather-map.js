@@ -1,6 +1,10 @@
 (function () {
     "use strict";
     $().ready(function () {
+
+        $('#NA').hide()
+        $('.puppiness').hide()
+
         var lat = 29.424122
         var lon = -98.493629
 
@@ -226,9 +230,5 @@
                     break;
             }
         }
-
-        $('#NA').hide()
-        $('.puppiness').hide()
-
     });
 })();
