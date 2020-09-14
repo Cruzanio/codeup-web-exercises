@@ -9,7 +9,7 @@
           integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="css/weather-map.css">
 </head>
-<body class="container-fluid">
+<body id='bg' class="container-fluid">
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -21,10 +21,22 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 
-<div class="container-fluid px-1 px-sm-3 py-5 mx-auto" >
+<div id="NA" class="row mt-5 justify-content-center">
+    <img class="tv" src="img/tv.jpg">
+    <video autoplay muted loop class="puppiness">
+        <source src="img/puppiness.webm">
+        <source id="pupvid" src="img/puppiness.mp4">
+        <source src="img/puppiness.ogv">
+    </video>
+</div>
+
+<div class="row mt-5 justify-content-center">
+    <div id='map' style='width: 800px; height: 500px;'></div>
+</div>
+<div class="container-fluid px-1 px-sm-3 py-5 mx-auto">
     <div class="row d-flex justify-content-center">
         <div class="row card0">
-            <div id='bg' class="card1 col-lg-8 col-md-7"><small id="update" class="suggestion cityName"></small>
+            <div class="card1 col-lg-8 col-md-7"><small id="update" class="suggestion cityName"></small>
                 <div id='icon' class="text-center"></div>
                 <div class="row px-3 mt-3 mb-3">
                     <h1 id='degrees' class="large-font mr-3">&#176;</h1>
@@ -37,11 +49,17 @@
                 </div>
             </div>
             <div class="card2 col-lg-4 col-md-5">
-                <div class="row px-3"><input id="userSearch" type="text" name="location" placeholder="Another location" class="mb-5">
-                    <div id="search" class="fa fa-search mb-5 mr-0 text-center"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                        <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
-                        <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
-                    </svg></div>
+                <div class="row px-3"><input id="userSearch" type="text" name="location"
+                                             placeholder="Find weather in..." class="mb-5">
+                    <div id="search" class="fa fa-search mb-5 mr-0 text-center">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/>
+                            <path fill-rule="evenodd"
+                                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/>
+                        </svg>
+                    </div>
                 </div>
                 <div class="mr-5">
                     <p class="light-text suggestion dayOfTheWeek" id="Sunday"></p>
@@ -73,9 +91,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row mt-5 justify-content-center">
-        <div id='map' style='width: 600px; height: 500px;'></div>
     </div>
 </div>
 

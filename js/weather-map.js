@@ -12,6 +12,9 @@
             zoom: 12// starting zoom
         });
 
+        var nav = new mapboxgl.NavigationControl();
+        map.addControl(nav, 'top-left');
+
         $('#update').html('Click to show current weather for: San Antonio')
         $('#cityName').html('San Antonio')
 
@@ -40,15 +43,17 @@
 
                     //Dynamic Background
                     if (data.current.weather[0].main === 'Rain') {
-                        // $('#bg').css('background-image', "url(img/rain.jpg)")
+                        $('#bg').css('background-image', "url(img/rain.jpg)")
                         $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
+                        $('.card1').css('color', 'white')
                     } else if (data.current.weather[0].main === 'Clouds') {
-                        // $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                        $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
                         $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
-                        // $('.card1').css('color', 'black')
+                        $('.card1').css('color', 'black')
                     } else if (data.current.weather[0].main === 'Clear') {
-                        // $('#bg').css('background-image', "url(img/xp.jpg)")
+                        $('#bg').css('background-image', "url(img/xp.jpg)")
                         $('#icon').html('<img class="image mt-5" src="img/sun.png">')
+                        $('.card1').css('color', 'white')
                     }
 
                     //High Low HTML Injections
@@ -87,6 +92,7 @@
         function newDay(day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function dataRead(data) {
+                console.log(data)
                 for (var i = 0; i <= data.daily.length - 1; i++) {
                     var unix = data.daily[i].dt * 1000
                     var date = new Date(unix)
@@ -108,15 +114,15 @@
 
                         //Dynamic Background
                         if (data.daily[i].weather[0].main === 'Rain') {
-                            // $('#bg').css('background-image', "url(img/rain.jpg)")
+                            $('#bg').css('background-image', "url(img/rain.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/rain-icon.png">')
                             $('.card1').css('color', 'white')
                         } else if (data.daily[i].weather[0].main === 'Clouds') {
-                            // $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
+                            $('#bg').css('background-image', "url(img/cloudy-bg.jpeg)")
                             $('#icon').html('<img class="image mt-5" src="img/cloudy.png">')
-                            // $('.card1').css('color', 'black')
+                            $('.card1').css('color', 'black')
                         } else if (data.daily[i].weather[0].main === 'Clear') {
-                            // $('#bg').css('background-image', "url(img/xp.jpg)")
+                            $('#bg').css('background-image', "url(img/xp.jpg)")
                             $('#icon').html('<img class="image mt-5" src="img/sun.png">')
                             $('.card1').css('color', 'white')
                         }
@@ -130,20 +136,33 @@
 
         function findForUser() {
             var userInput = document.getElementById('userSearch')
-            geocode(userInput.value, MAPBOX_TOKEN2)
-                .then(function (result) {
-                    console.log(result)
-                    lat = result[1]
-                    lon = result[0]
-                    var LLObj = {lng: lon, lat: lat}
-                    createMarker(LLObj)
-                    reverseGeocode(LLObj, MAPBOX_TOKEN2)
-                        .then(function (data) {
-                            $('#cityName').html(data)
-                            $('#update').html('Show Current Weather for: ' + data)
+            if (userInput.value === 'DevTools') {
+                $('#map').hide()
+                $('#NA').show()
+                $('.tv').click(function () {
+                    $('.puppiness').fadeIn(5000)
+                }).dblclick(function () {
+                    $('#NA').hide()
+                    $('#map').show()
+                })
+                document.getElementById('NA').scrollIntoView()
+            } else {
+                geocode(userInput.value, MAPBOX_TOKEN2)
+                    .then(function (result) {
+                        lat = result[1]
+                        lon = result[0]
+                        $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
+                        ).done(function (data) {
+                            $('#cityName').html(data.name)
+                            $('#update').html('Show Current Weather for: ' + data.name)
+                            console.log(data)
                         })
-                    currentWeatherLoad()
-                });
+                        var LLObj = {lng: lon, lat: lat}
+                        createMarker(LLObj)
+                        currentWeatherLoad()
+                        document.getElementById('map').scrollIntoView()
+                    });
+            }
         }
 
         function createMarker(LLObj) {
@@ -152,7 +171,7 @@
                 .addTo(map)
                 .setDraggable(true)
             map.setCenter(LLObj);
-            map.setZoom(14);
+            map.setZoom(7);
 
             function onDragEnd() {
                 var lngLat = userMarker.getLngLat()
@@ -160,8 +179,15 @@
                 lon = lngLat.lng
                 map.setCenter(lngLat)
                 map.setZoom(10)
+                $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
+                ).done(function (data) {
+                    $('#cityName').html(data.name)
+                    $('#update').html('Show Current Weather for: ' + data.name)
+                    console.log(data)
+                })
                 currentWeatherLoad()
             }
+
             userMarker.on('dragend', onDragEnd)
         }
 
@@ -192,6 +218,9 @@
                     break;
             }
         }
+
+        $('#NA').hide()
+        $('.puppiness').hide()
 
     });
 })();
