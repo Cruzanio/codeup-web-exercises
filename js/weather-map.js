@@ -91,7 +91,7 @@
         //Takes in the day from above and checks forecast array displaying info of matching day
         function newDay(day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
-            ).done(function dataRead(data) {
+            ).done(function (data) {
                 console.log(data)
                 for (var i = 0; i <= data.daily.length - 1; i++) {
                     var unix = data.daily[i].dt * 1000
@@ -171,7 +171,14 @@
                 .addTo(map)
                 .setDraggable(true)
             map.setCenter(LLObj);
-            map.setZoom(7);
+            map.setZoom(8);
+            reverseGeocode(LLObj, MAPBOX_TOKEN2).then(function (data) {
+                console.log(data)
+                var address = data.features[0].place_name
+                console.log(address)
+                userMarker.setPopup(new mapboxgl.Popup()
+                    .setHTML("<p style='color: black; text-align: center'>" + address + "</p>"))
+            })
 
             function onDragEnd() {
                 var lngLat = userMarker.getLngLat()
@@ -179,6 +186,13 @@
                 lon = lngLat.lng
                 map.setCenter(lngLat)
                 map.setZoom(10)
+                reverseGeocode(lngLat, MAPBOX_TOKEN2).then(function (data) {
+                    console.log(data)
+                    var address = data.features[0].place_name
+                    console.log(address)
+                    userMarker.setPopup(new mapboxgl.Popup()
+                        .setHTML("<p style='color: black; text-align: center'>" + address + "</p>"))
+                })
                 $.get("https://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
                 ).done(function (data) {
                     $('#cityName').html(data.name)

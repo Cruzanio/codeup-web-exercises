@@ -27,10 +27,7 @@ function reverseGeocode(coordinates, token) {
     return fetch(baseUrl + endPoint + coordinates.lng + "," + coordinates.lat + '.json' + "?" + 'access_token=' + token)
         .then(response => response.json())
         .then(data => {
-            var hopefulCity = data.features[2].context[1].text
-            console.log(hopefulCity)
-            console.log(data)
-            return hopefulCity
+            return data
         })
 };
 
