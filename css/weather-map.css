@@ -125,13 +125,6 @@ input:focus {
     justify-content: space-between;
 }
 
-/*.puppiness {*/
-/*    width: 700px;*/
-/*    height: 400px;*/
-/*    border-radius: 15px;*/
-/*    box-shadow: 0px 0px 10px 5px black;*/
-/*    top: 100px;*/
-/*}*/
 #bg {
     background-repeat: no-repeat;
     background-size: cover;
@@ -165,12 +158,4 @@ input:focus {
     box-shadow: 0px 0px 10px 5px black;
 }
 
-
-/*.puppiness {*/
-/*    height:100px;*/
-/*    left:50px; !* play around with this *!*/
-/*    position:absolute;*/
-/*    top:90px; !* and play around with this *!*/
-/*    width:500px;*/
-/*}*/
 

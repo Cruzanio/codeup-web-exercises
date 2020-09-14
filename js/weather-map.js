@@ -92,7 +92,6 @@
         function newDay(day) {
             $.get("https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" + lon + "&exclude=hourly,minutely&appid=" + OPEN_WEATHER_MAP_API + "&units=imperial"
             ).done(function (data) {
-                console.log(data)
                 for (var i = 0; i <= data.daily.length - 1; i++) {
                     var unix = data.daily[i].dt * 1000
                     var date = new Date(unix)
@@ -173,9 +172,7 @@
             map.setCenter(LLObj);
             map.setZoom(8);
             reverseGeocode(LLObj, MAPBOX_TOKEN2).then(function (data) {
-                console.log(data)
                 var address = data.features[0].place_name
-                console.log(address)
                 userMarker.setPopup(new mapboxgl.Popup()
                     .setHTML("<p style='color: black; text-align: center'>" + address + "</p>"))
             })
@@ -187,9 +184,7 @@
                 map.setCenter(lngLat)
                 map.setZoom(10)
                 reverseGeocode(lngLat, MAPBOX_TOKEN2).then(function (data) {
-                    console.log(data)
                     var address = data.features[0].place_name
-                    console.log(address)
                     userMarker.setPopup(new mapboxgl.Popup()
                         .setHTML("<p style='color: black; text-align: center'>" + address + "</p>"))
                 })
@@ -197,7 +192,6 @@
                 ).done(function (data) {
                     $('#cityName').html(data.name)
                     $('#update').html('Show Current Weather for: ' + data.name)
-                    console.log(data)
                 })
                 currentWeatherLoad()
             }
