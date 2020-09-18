@@ -51,5 +51,9 @@ let averageYears = (yOfExp / users.length)
 console.log(averageYears)
 
 
-let longestEmail = users.reduce((total, {email}) => email.length, 0)
+let longestEmail = users.reduce((total, {email}) => total + email.length, 0)
 console.log(longestEmail)
+
+
+let instructors = users.reduce((greeting, {name}) => greeting += (name + ", "), "")
+console.log(instructors)
