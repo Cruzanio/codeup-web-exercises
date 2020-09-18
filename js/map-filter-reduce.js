@@ -65,22 +65,7 @@ console.log(longestEmail)
 let instructors = `Your instructors are: ` + (users.reduce((greeting, {name}) => greeting + name.charAt(0).toUpperCase() + name.slice(1) + ", ", "")).slice(0, -2)
 console.log(instructors)
 
-const uniqueLanguages = [...new Set(users.map(user => user.languages))]
+let uniqueLanguages = users.map(user => user.languages).join()
+uniqueLanguages = Array.from(new Set(uniqueLanguages.split(','))).toString();
 console.log(uniqueLanguages);
 
-// function countWords(sentence) {
-//     const words = sentence.split(' '); // transform a sentence into an array of words
-//     const wordCountObject = words.reduce((wordCounts, word) => {
-//         if (typeof wordCounts[word] === 'undefined') {
-//             // if the word is not yet present in our object, set it's value to 1
-//             wordCounts[word] = 1;
-//         } else {
-//             // otherwise increment the existing count
-//             wordCounts[word] += 1;
-//         }
-//         return wordCounts;
-//     }, {}); // start with an empty object
-//     return wordCountObject;
-// }
-//
-// countWords('Mary had a little lamb little lamb little lamb');
