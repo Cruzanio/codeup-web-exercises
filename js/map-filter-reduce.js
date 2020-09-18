@@ -88,7 +88,6 @@ console.log(userUniqueLanguages2)
 // console.log(uniqueLanguages);
 
 
-
 const fruits = ["cantaloupe", "orange", "date", "elderberry", "ugli fruit", "pineapple"];
 const customers = [
     {
@@ -135,53 +134,66 @@ const pets = [
 ];
 
 const family = [
-       {
-           name: "Pam",
-           gender: "female",
-           age: 29,
-       },
-           {
-           name: "Amelie",
-           gender: "female",
-           age: 10,
-       },
-           {
-           name: "Justin",
-           gender: "male",
-           age: 32,
-       },
+    {
+        name: "Pam",
+        gender: "female",
+        age: 29,
+    },
+    {
+        name: "Amelie",
+        gender: "female",
+        age: 10,
+    },
+    {
+        name: "Justin",
+        gender: "male",
+        age: 32,
+    },
 ];
 // Use map, filter, and reduce to:
 //     ​
 // 1. Create an array of the first letters of each fruit
 
-    let firstLet = fruits.map(fruit => fruit.charAt([0]))
-    console.log(firstLet)
+let firstLet = fruits.map(fruit => fruit.charAt([0]))
+console.log(firstLet)
 
 // 1. Create array of user objects based on the customers array of objects (each
 // user object should just have name and age properties)
 
-    let people = customers.map(({name, age}) => ({name, age}))
-    console.log(people)
+let people = customers.map(({name, age}) => ({name, age}))
+console.log(people)
 
 // 1. Create an array of civil servant customers (teachers and police officers)
 // containing the same properties as the objects on the customers objects
 
-    let civilServ = customers.filter(({occupation}) => occupation === 'Police Officer' || occupation === 'Teacher')
-    console.log(civilServ)
+let civilServ = customers.filter(({occupation}) => occupation === 'Police Officer' || occupation === 'Teacher')
+console.log(civilServ)
 
 // 1. Determine the average age of all the customers
 
-
+let totalAge = customers.reduce((acc, {age}) => acc += age, 0)
+console.log(totalAge)
+let averageAge = totalAge / customers.length
+console.log(averageAge)
 
 // 1. Create a function `makeSuperPet()` that takes in the pets array as input and
 // returns a single pet object with the following shape...
 
-    // {
-    //     name: ALL_PET_NAMES_CONCATENATED_INTO_A_SINGLE_STRING,
-    //     age: THE_TOTAL_OF_ALL_PET_AGES,
-    //     breed: THE_FIRST_LETTERS_OF_ALL_PET_BREEDS_CONCATENATATED_INTO_A_SINGLE_STRING
-    // }
+function makeSuperPet(input) {
+    const SuperPet = {
+        name: input.map(({name}) => name).join(''),
+        age: input.reduce((acc, {age}) => acc += age, 0),
+        breed: input.map(({breed}) => breed.charAt([0])).join("")
+    }
+    console.log(SuperPet)
+    return SuperPet
+}
+makeSuperPet(pets)
+// {
+//     name: ALL_PET_NAMES_CONCATENATED_INTO_A_SINGLE_STRING,
+//     age: THE_TOTAL_OF_ALL_PET_AGES,
+//     breed: THE_FIRST_LETTERS_OF_ALL_PET_BREEDS_CONCATENATATED_INTO_A_SINGLE_STRING
+// }
 
 // 1. Create a function that takes in an array of pets and returns an array of the
 // length of first names for pugs only. Your output for the given input should
@@ -198,8 +210,8 @@ const family = [
 // of the same names with a last name of Smith
 
 
-    // input = ['Sally', 'Fred', 'Steve']
-    // output = ['Sally Smith', 'Fred Smith', 'Steve']
+// input = ['Sally', 'Fred', 'Steve']
+// output = ['Sally Smith', 'Fred Smith', 'Steve']
 
 
 // 1. Create a function that when given an array of numbers, return the sum of
