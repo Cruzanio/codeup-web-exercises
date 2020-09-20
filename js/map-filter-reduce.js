@@ -240,6 +240,7 @@ addSmith(family)
 
 
 let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98, 60]
+let moreNames = ['Jack', 'Alan', 'Susan', 'Mike', 'Iris', 'Nick', 'Edward']
 
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
@@ -261,7 +262,13 @@ sumOfTens(numbers)
 
 // 1. Create a function that when given an array of names, return a string of all
 // the first letters of each name
-// ​
+
+function firstLetters(input) {
+    let first = input.map(person => person.charAt([0]))
+    console.log(first)
+}
+firstLetters(moreNames)
+
 // 1. Create a function that when given an array of values, returns an array of
 // only the truthy values
 // ​
