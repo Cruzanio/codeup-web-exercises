@@ -242,6 +242,12 @@ addSmith(family)
 let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98, 60]
 let moreNames = ['Jack', 'Alan', 'Susan', 'Mike', 'Iris', 'Nick', 'Edward']
 let isTrueorNot = [(10 > 2), (10 + 2 === 12), (10 * 2 === 30), (10 / 2 === 5), ('cat' === 'dog'), (isNaN('sam'))]
+let coin = {
+    shape: 'circle',
+    sides: 2,
+    side1: 'Heads',
+    side2: 'Tails'
+}
 
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
@@ -281,14 +287,21 @@ truths(isTrueorNot)
 
 // 1. Create a function that when given an object, returns the property values as
 // an array of elements
-// ​
-// 1. Create a function that when given an object, returns the property values as
-// an array of elements
-// ​
+
+function propertyValues(input) {
+    let keysToArray = Object.keys(input)
+    console.log(keysToArray)
+    let valuesToArray = Object.values(input)
+    console.log(valuesToArray)
+}
+propertyValues(coin)
+
 // 1. Create a function that when given three arguments: a min num, a max num, an
 // array of nums will return the array of nums that are only between the min
 // and max values, inclusive
-// ​
+
+
+
 // 1. Create a function that when given an array of strings, returns an array of
 // objects with properties for the given string value and the length of the
 // string and the string without vowels (not including y)
