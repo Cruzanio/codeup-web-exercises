@@ -314,8 +314,7 @@ allWithin(65, 97, numbers)
 // withoutVowel: not including y
 
 function stringToObject(input) {
-    let something = input.map(string => ({value: string, length: string.length, withoutVowel: (string.split("").reduce((acc, string) => (/[aeiouyAEIOUY]/.test(string) ? acc += string : acc, "")))}))
+    let something = input.map(string => ({value: string, length: string.length, withoutVowel: (string.split("").reduce((acc, string) => (/[aeiouyAEIOUY]/.test(string)) ? acc : acc += string, ""))}))
     console.log(something)
 }
 stringToObject(moreNames)
-// filter(split => (/[a-zA-Z]/.test()
