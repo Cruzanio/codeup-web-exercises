@@ -215,7 +215,13 @@ getFemaleFamilyMembers(family)
 // 1. Create a function `makeLongPetString()` that when given the variable of pets,
 //     returns a string of all property values with dashes separating each property
 // value
-// ​
+
+function makeLongPetString(input) {
+    let longString = input.map(pet => `${pet.name}-${pet.age}-${pet.breed}`)
+    console.log(longString)
+}
+makeLongPetString(pets)
+
 // 1. Create a function that when given an array of first names, returns an array
 // of the same names with a last name of Smith
 
