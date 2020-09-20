@@ -241,6 +241,7 @@ addSmith(family)
 
 let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98, 60]
 let moreNames = ['Jack', 'Alan', 'Susan', 'Mike', 'Iris', 'Nick', 'Edward']
+let isTrueorNot = [(10 > 2), (10 + 2 === 12), (10 * 2 === 30), (10 / 2 === 5), ('cat' === 'dog'), (isNaN('sam'))]
 
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
@@ -271,7 +272,13 @@ firstLetters(moreNames)
 
 // 1. Create a function that when given an array of values, returns an array of
 // only the truthy values
-// ​
+
+function truths(input) {
+    let truth = input.filter(Boolean)
+    console.log(truth)
+}
+truths(isTrueorNot)
+
 // 1. Create a function that when given an object, returns the property values as
 // an array of elements
 // ​
