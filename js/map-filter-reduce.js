@@ -297,10 +297,14 @@ function propertyValues(input) {
 propertyValues(coin)
 
 // 1. Create a function that when given three arguments: a min num, a max num, an
-// array of nums will return the array of nums that are only between the min
+// array of nums, will return the array of nums that are only between the min
 // and max values, inclusive
 
-
+function allWithin(min, max, array) {
+    let inclusive = array.filter(num => (num >= min && num <=max))
+    console.log(inclusive)
+}
+allWithin(65, 97, numbers)
 
 // 1. Create a function that when given an array of strings, returns an array of
 // objects with properties for the given string value and the length of the
