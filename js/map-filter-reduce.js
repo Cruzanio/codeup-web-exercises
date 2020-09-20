@@ -224,11 +224,14 @@ makeLongPetString(pets)
 
 // 1. Create a function that when given an array of first names, returns an array
 // of the same names with a last name of Smith
-
-
 // input = ['Sally', 'Fred', 'Steve']
 // output = ['Sally Smith', 'Fred Smith', 'Steve']
 
+function addSmith (input) {
+    let theSmiths = input.map(({name}) => `${name} Smith`)
+    console.log(theSmiths)
+}
+addSmith(family)
 
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
