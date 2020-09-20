@@ -185,7 +185,6 @@ function makeSuperPet(input) {
         age: input.reduce((acc, {age}) => acc += age, 0),
         breed: input.map(({breed}) => breed.charAt([0])).join("")
     }
-    console.log(SuperPet)
     return SuperPet
 }
 makeSuperPet(pets)
@@ -194,11 +193,18 @@ makeSuperPet(pets)
 //     age: THE_TOTAL_OF_ALL_PET_AGES,
 //     breed: THE_FIRST_LETTERS_OF_ALL_PET_BREEDS_CONCATENATATED_INTO_A_SINGLE_STRING
 // }
-
 // 1. Create a function that takes in an array of pets and returns an array of the
 // length of first names for pugs only. Your output for the given input should
 // be [3, 6] for 'Bud' and 'Bowser'
-// ​
+
+function pugName(input) {
+    let pugBreed = input.filter(({breed}) => breed === 'Pug').map(({name}) => name.length)
+    console.log(pugBreed)
+}
+pugName(pets)
+// let civilServ = customers.filter(({occupation}) => occupation === 'Police Officer' || occupation === 'Teacher')
+
+
 // 1. Create a function `getFemaleFamilyMembers()` that when given the family
 // variable as an argument, returns an array of female family member names
 // ​
