@@ -202,12 +202,16 @@ function pugName(input) {
     console.log(pugBreed)
 }
 pugName(pets)
-// let civilServ = customers.filter(({occupation}) => occupation === 'Police Officer' || occupation === 'Teacher')
-
 
 // 1. Create a function `getFemaleFamilyMembers()` that when given the family
 // variable as an argument, returns an array of female family member names
-// ​
+
+function getFemaleFamilyMembers(input) {
+    let femaleFamily = input.filter(({gender}) => gender !== 'male')
+    console.log(femaleFamily)
+}
+getFemaleFamilyMembers(family)
+
 // 1. Create a function `makeLongPetString()` that when given the variable of pets,
 //     returns a string of all property values with dashes separating each property
 // value
