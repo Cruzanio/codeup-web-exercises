@@ -318,3 +318,79 @@ function stringToObject(input) {
     console.log(something)
 }
 stringToObject(moreNames)
+
+const users1 = [
+    {
+        id: 1,
+        name: 'ryan',
+        email: 'ryan@codeup.com',
+        languages: ['clojure', 'javascript'],
+    },
+    {
+        id: 2,
+        name: 'luis',
+        email: 'luis@codeup.com',
+        languages: ['java', 'scala', 'php'],
+    },
+    {
+        id: 3,
+        name: 'zach',
+        email: 'zach@codeup.com',
+        languages: ['javascript', 'bash'],
+    },
+    {
+        id: 4,
+        name: 'fernando',
+        email: 'fernando@codeup.com',
+        languages: ['java', 'php', 'sql'],
+    },
+    {
+        id: 5,
+        name: 'justin',
+        email: 'justin@codeup.com',
+        languages: ['html', 'css', 'javascript', 'php']
+    }
+];
+
+// 1. Use `.reduce` to transform the array into an object where the object's keys
+//    are ids and the values are objects that represent each user
+
+// let bigObject =
+
+// 1. Use `.reduce` to get a unique list of the languages the codeup instructors
+//    know
+
+// /**
+//  * HINT: solve the map/filter/reduce problem with a foreach first
+//  */
+
+// Reduce Problem #1
+// given an array of names, use .reduce to produce a single string that contains everyone's name
+var names1 = ["Ben", "Jafar", "Matt", "Priya", "Brian"];
+
+// Reduce Problem #2: Sum up all of the numbers in the following array using .reduce
+// let numbers1 = [1, 2, 3, 99, 1, -3, 1000, 0, 33, -67];
+
+// Reduce Problem #3:
+// Given the above array of numbers, write the .reduce necessary to determine the highest number of the array.
+
+// Reduce problem #4:
+// Given the above array of numbers, write the .reduce necessary to determine the lowest number of the array.
+
+// Reduce problem #5:
+// Given the array [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], use .reduce to determine the average of all the numbers
+
+// Reduce problem #6, given the array of numbers from above, determine the average of all numbers
+
+// Mapping problem #3
+// Using .map to make a Projection
+// Applying a function to a value and creating a new value is called a projection.
+// each video object should  make a new object containing only the id and the title.
+// Your output should be a variable called idAndTitleColleciton and look like
+/* [
+*  {"id": 70111470, "title": "Die Hard"},
+*  {"id": 654356453, "title": "Bad Boys},
+*  {"id": 65432445, "title": "The Chamber},
+*  etc...
+* ];
+*/
