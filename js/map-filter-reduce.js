@@ -309,3 +309,13 @@ allWithin(65, 97, numbers)
 // 1. Create a function that when given an array of strings, returns an array of
 // objects with properties for the given string value and the length of the
 // string and the string without vowels (not including y)
+// value: string name
+// length: string.length
+// withoutVowel: not including y
+
+function stringToObject(input) {
+    let something = input.map(string => ({value: string, length: string.length, withoutVowel: (string.split("").reduce((acc, string) => (/[aeiouyAEIOUY]/.test(string) ? acc += string : acc, "")))}))
+    console.log(something)
+}
+stringToObject(moreNames)
+// filter(split => (/[a-zA-Z]/.test()
