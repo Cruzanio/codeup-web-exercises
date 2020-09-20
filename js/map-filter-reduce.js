@@ -187,6 +187,7 @@ function makeSuperPet(input) {
     }
     return SuperPet
 }
+
 makeSuperPet(pets)
 // {
 //     name: ALL_PET_NAMES_CONCATENATED_INTO_A_SINGLE_STRING,
@@ -201,6 +202,7 @@ function pugName(input) {
     let pugBreed = input.filter(({breed}) => breed === 'Pug').map(({name}) => name.length)
     console.log(pugBreed)
 }
+
 pugName(pets)
 
 // 1. Create a function `getFemaleFamilyMembers()` that when given the family
@@ -210,6 +212,7 @@ function getFemaleFamilyMembers(input) {
     let femaleFamily = input.filter(({gender}) => gender !== 'male')
     console.log(femaleFamily)
 }
+
 getFemaleFamilyMembers(family)
 
 // 1. Create a function `makeLongPetString()` that when given the variable of pets,
@@ -220,6 +223,7 @@ function makeLongPetString(input) {
     let longString = input.map(pet => `${pet.name}-${pet.age}-${pet.breed}`)
     console.log(longString)
 }
+
 makeLongPetString(pets)
 
 // 1. Create a function that when given an array of first names, returns an array
@@ -227,28 +231,34 @@ makeLongPetString(pets)
 // input = ['Sally', 'Fred', 'Steve']
 // output = ['Sally Smith', 'Fred Smith', 'Steve Smith']
 
-function addSmith (input) {
+function addSmith(input) {
     let theSmiths = input.map(({name}) => `${name} Smith`)
     console.log(theSmiths)
 }
+
 addSmith(family)
 
 
-
-let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98]
+let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98, 60]
 
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
 
-function sumOfEvens (input) {
-    let sum = (input.reduce((acc, number) => ((number % 2 === 0) ? acc + number : acc), 0))
+function sumOfEvens(input) {
+    let sum = input.reduce((acc, number) => ((number % 2 === 0) ? acc + number : acc), 0)
     console.log(sum)
 }
 sumOfEvens(numbers)
 
 // 1. Create a function that when given an array of numbers, return the sum of all
 // numbers evenly divisible by 10
-// ​
+
+function sumOfTens(input) {
+    let sum = input.reduce((acc, number) => ((number % 10 === 0) ? acc + number : acc), 0)
+        console.log(sum)
+}
+sumOfTens(numbers)
+
 // 1. Create a function that when given an array of names, return a string of all
 // the first letters of each name
 // ​
