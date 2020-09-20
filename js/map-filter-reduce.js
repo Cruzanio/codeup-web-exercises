@@ -225,7 +225,7 @@ makeLongPetString(pets)
 // 1. Create a function that when given an array of first names, returns an array
 // of the same names with a last name of Smith
 // input = ['Sally', 'Fred', 'Steve']
-// output = ['Sally Smith', 'Fred Smith', 'Steve']
+// output = ['Sally Smith', 'Fred Smith', 'Steve Smith']
 
 function addSmith (input) {
     let theSmiths = input.map(({name}) => `${name} Smith`)
@@ -233,9 +233,19 @@ function addSmith (input) {
 }
 addSmith(family)
 
+
+
+let numbers = [11, 24, 37, 40, 52, 69, 73, 81, 98]
+
 // 1. Create a function that when given an array of numbers, return the sum of
 // the even numbers
-// ​
+
+function sumOfEvens (input) {
+    let sum = (input.reduce((acc, number) => ((number % 2 === 0) ? acc + number : acc), 0))
+    console.log(sum)
+}
+sumOfEvens(numbers)
+
 // 1. Create a function that when given an array of numbers, return the sum of all
 // numbers evenly divisible by 10
 // ​
