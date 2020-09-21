@@ -50,3 +50,12 @@ let goPurpleTurtle = new Promise((resolve => {
 
 Promise.race([goRedTurtle, goBlueTurtle, goOrangeTurtle, goPurpleTurtle])
 .then(data => console.log(data))
+
+//Exercise
+
+function gitUserInfo() {
+    fetch('https://api.github.com/users/cruzaniovillarreal/events', {headers: {'Authorization': 'token' + GITHUB_API_KEY}})
+        .then(result => result.json())
+        .then(data => console.log(data[0].created_at))
+}
+gitUserInfo()
