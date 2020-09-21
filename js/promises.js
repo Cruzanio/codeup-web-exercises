@@ -59,3 +59,29 @@ function gitUserInfo() {
         .then(data => console.log(data[0].created_at))
 }
 gitUserInfo()
+
+
+let wait = function (num) {
+    return new Promise((resolve, reject) => {
+        setTimeout (() => {
+            (isNaN(num)) ? reject('Failed to Comply') : resolve(num)
+        }, num)
+    })
+}
+wait(1000).then((num) => console.log(`You'll see this after ${num} milliseconds`))
+wait(3000).then((num) => console.log(`You'll see this after ${num} milliseconds`))
+
+// function wait(num) {
+//     return new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             if (resolve) {
+//                 return resolve(`You'll see this after ${num} ms`);
+//             } else {
+//                 return reject('Network Connection Error!');
+//             }
+//         }, num);
+//     });
+// }
+// console.log(wait()); // pending promise
+// wait(1000).then((num) => console.log(num))
+// wait(3000).then((num) => console.log(num))
