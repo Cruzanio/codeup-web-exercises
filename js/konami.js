@@ -22,6 +22,20 @@ var cheatEnter = []
 var fail = new Audio('img/evil-laugh.mp3')
 var success = new Audio('img/ta-da.mp3')
 
+$('#start').on("click", function () {
+    $('#question').hide()
+    $('#cursor').hide()
+    success.play()
+    $('#success-banner').show()
+})
+$('#revert').on("click", function () {
+    $('#question').show()
+    $('#cursor').show()
+    $('#success-banner').hide()
+    $('#fail').hide()
+    $('#fail-banner').hide()
+})
+
 $(document).keyup(function () {
     var konamiArray = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65, 13]
     cheatEnter.push(event.keyCode)
