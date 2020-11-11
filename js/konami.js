@@ -22,13 +22,27 @@ var cheatEnter = []
 var fail = new Audio('img/evil-laugh.mp3')
 var success = new Audio('img/ta-da.mp3')
 
-$('#start').on("click", function () {
+$('#start-button').on("click", function () {
+    $('#bg-img').css('background-image', "url('img/retro-game-background.jpg')")
     $('#question').hide()
     $('#cursor').hide()
     success.play()
     $('#success-banner').show()
+    $('#fail').hide()
+    $('#fail-banner').hide()
 })
-$('#revert').on("click", function () {
+$('#fail-button').on("click", function () {
+    $('#question').hide()
+    $('#cursor').hide()
+    $('#start').hide()
+    $('#success-banner').hide()
+    $('#fail').show()
+    $('#bg-img').css('background-image', "url('img/fail-background.jpg')")
+    fail.play()
+    $('#fail-banner').show()
+})
+$('#revert-button').on("click", function () {
+    $('#bg-img').css('background-image', "url('img/retro-game-background.jpg')")
     $('#question').show()
     $('#cursor').show()
     $('#success-banner').hide()

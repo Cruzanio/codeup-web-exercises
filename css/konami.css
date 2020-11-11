@@ -12,7 +12,7 @@ body {
     text-shadow: 0px 0px 15px purple;
 }
 
-#start, #revert {
+#start-button, #revert-button, #fail-button {
     font-size: 75px;
     color: white;
     text-align: center;
