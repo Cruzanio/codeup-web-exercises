@@ -87,4 +87,28 @@
         return(numbers.slice(-1)[0])
     }
     console.log(returnLastElement(numbers))
+
+    var num = 20
+
+    function iteration() {
+        num -= 1
+        while (num >= 1) {
+            console.log(num)
+            iteration()
+        }
+    }
+    iteration()
+
+    var traveling10 = [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    function reorder() {
+        traveling10.shift()
+        for (var i = 0; i <= 9; i++) {
+            traveling10.splice(i, 0, 10);
+            console.log(traveling10)
+            traveling10.splice(i, 1);
+        }
+    }
+    reorder()
+
+
 })();
