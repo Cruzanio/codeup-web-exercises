@@ -100,23 +100,27 @@
     iteration()
 
     var traveling10 = [10, 1, 2, 3, 4, 5, 6, 7, 8, 9]
-    function reorder() {
-        traveling10.shift()
-        for (var i = 0; i <= 9; i++) {
-            if (i === 9) {
-                for (var j = 9; j >= 0; j--) {
-                    traveling10.splice(j, 0, 10);
-                    console.log(traveling10)
-                    traveling10.splice(j, 1);
+    function reorder(target) {
+        traveling10.shift();
+        var cycles = target;
+        while (cycles > 0) {
+            for (var i = 0; i <= 9; i++) {
+                if (i === 9) {
+                    for (var j = 9; j >= 0; j--) {
+                        traveling10.splice(j, 0, 10);
+                        console.log(traveling10);
+                        traveling10.splice(j, 1);
+                    }
+                } else {
+                    traveling10.splice(i, 0, 10);
+                    console.log(traveling10);
+                    traveling10.splice(i, 1);
                 }
-            } else {
-                traveling10.splice(i, 0, 10);
-                console.log(traveling10)
-                traveling10.splice(i, 1);
             }
+            cycles -= 1;
         }
     }
-    reorder()
+    reorder(3);
 
 
 })();
