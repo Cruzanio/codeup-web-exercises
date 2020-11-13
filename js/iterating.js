@@ -103,9 +103,17 @@
     function reorder() {
         traveling10.shift()
         for (var i = 0; i <= 9; i++) {
-            traveling10.splice(i, 0, 10);
-            console.log(traveling10)
-            traveling10.splice(i, 1);
+            if (i === 9) {
+                for (var j = 9; j >= 0; j--) {
+                    traveling10.splice(j, 0, 10);
+                    console.log(traveling10)
+                    traveling10.splice(j, 1);
+                }
+            } else {
+                traveling10.splice(i, 0, 10);
+                console.log(traveling10)
+                traveling10.splice(i, 1);
+            }
         }
     }
     reorder()
