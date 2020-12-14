@@ -31,6 +31,18 @@ function addUp(num) { 
         return num; 
     return num + addUp(num - 1) 
 }
+var num = Math.floor(Math.random() * 50)
+function loopAddition(num) {
+    var total = num
+    var count = 0
+    do {
+        count += total
+        total -= 1
+    } while (total > 0)
+    console.log("starting number is "+num)
+    console.log("accumulated total is "+count)
+}
 
+loopAddition(num)
 
 

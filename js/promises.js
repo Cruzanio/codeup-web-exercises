@@ -54,11 +54,12 @@ Promise.race([goRedTurtle, goBlueTurtle, goOrangeTurtle, goPurpleTurtle])
 //Exercise
 
 function gitUserInfo() {
-    fetch('https://api.github.com/users/cruzaniovillarreal/events', {headers: {'Authorization': 'token' + GITHUB_API_KEY}})
-        .then(result => result.json())
-        .then(data => console.log(data[0].created_at))
+   return fetch('https://api.github.com/users/cruzaniovillarreal/events', {headers: {'Authorization': 'token' + GITHUB_API_KEY}})
+
 }
 gitUserInfo()
+    .then(result => result.json())
+    .then(data => console.log(data[0].created_at))
 
 
 let wait = function (num) {
@@ -82,6 +83,7 @@ wait(3000).then((num) => console.log(`You'll see this after ${num} milliseconds`
 //         }, num);
 //     });
 // }
-// console.log(wait()); // pending promise
+// console.log(wait())
+// ; // pending promise
 // wait(1000).then((num) => console.log(num))
 // wait(3000).then((num) => console.log(num))
